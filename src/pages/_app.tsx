@@ -5,7 +5,7 @@ import { CacheProvider } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { createEmotionCache } from '@src/pages/_document'
 import { theme } from "@src/styles/theme";
-import '../styles/globals.css'
+import '../styles/globals.scss'
 
 const clientSideEmotionCache = createEmotionCache();
 
