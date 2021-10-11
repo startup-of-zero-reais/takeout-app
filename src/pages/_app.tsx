@@ -5,6 +5,7 @@ import { CacheProvider } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { createEmotionCache } from '@src/pages/_document'
 import { theme } from "@src/styles/theme";
+import { BottomNavigator } from "@src/components";
 import '../styles/globals.scss'
 
 const clientSideEmotionCache = createEmotionCache();
@@ -23,6 +24,7 @@ export default function MyApp( { Component, emotionCache = clientSideEmotionCach
 			<ThemeProvider theme={ theme }>
 				<CssBaseline/>
 				<Component { ...pageProps } />
+				<BottomNavigator />
 			</ThemeProvider>
 		</CacheProvider>
 	)

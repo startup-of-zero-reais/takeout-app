@@ -1,11 +1,11 @@
-import type { NextPage } from 'next'
+import React from 'react';
 
-import { BottomNavigator } from "@src/components";
+type HomeProps = {}
 
-const Home: NextPage = () => {
+const Home = ( _: HomeProps ) => {
 	return (
-		<BottomNavigator/>
-	)
+		<h1>Home</h1>
+	);
 }
 
-export default Home
+export default Home;
