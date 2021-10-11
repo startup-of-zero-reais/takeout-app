@@ -1,11 +1,10 @@
-.bottom-menu {
-  background-color: var(--redVermilionBird);
+.menu-wrapper {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 5;
   height: 70px;
-  border-radius: 8px 8px 0 0;
 
   .menu {
     display: grid;
@@ -13,7 +12,6 @@
     justify-items: center;
     margin: 0 auto;
     max-width: 768px;
-    position: relative;
 
     & > a {
       display: grid;
@@ -26,7 +24,7 @@
       z-index: 2;
       border-radius: 50%;
       transition: all 400ms;
-
+      overflow: visible;
 
       &.active {
         position: relative;
@@ -35,6 +33,17 @@
       }
     }
   }
+}
+
+.bottom-menu {
+  background-color: var(--redVermilionBird);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  border-radius: 8px 8px 0 0;
+  clip-path: url(#menumask);
 }
 
 .svg-animation {

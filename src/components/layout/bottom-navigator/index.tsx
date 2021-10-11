@@ -1,16 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import _ from 'lodash';
-import { FiHome, FiShoppingCart, FiUser } from 'react-icons/fi';
-import { BsTrophy } from 'react-icons/bs';
 import styles from './style.module.scss';
 import { classnames } from "@src/components";
 import { BottomLink } from "./bottom-link";
+import { getRoutes, RouteNames } from "@src/routes";
 
 type BottomNavigatorProps = {}
 
+const routes: RouteNames[] = [ 'home', 'cart', 'prizes', 'profile' ];
+
 export const BottomNavigator = ( _: BottomNavigatorProps ) => {
 	const [ win, setWin ] = useState<number>( 1024 );
-	const [ value, setValue ] = useState( 1 )
+	const [ value, setValue ] = useState( 0 )
 
 	const onClick = ( v: number ) => ( e: any ) => {
 		e.preventDefault();
@@ -30,47 +31,31 @@ export const BottomNavigator = ( _: BottomNavigatorProps ) => {
 	}, [] )
 
 	return (
-		<nav className={ classnames( styles[ 'bottom-menu' ] ) }>
+		<div className={ classnames( styles[ 'menu-wrapper' ] ) }>
 			<div className={ classnames( styles[ 'menu' ] ) }>
-				<BottomLink
-					onClick={ onClick( 1 ) }
-					icon={ <FiHome size={ 24 }/> }
-					to={ "#" }
-					selected={ value === 1 }
-				/>
+				{ getRoutes( routes ).map( ( route, i ) => (
+					<BottomLink
+						key={ i.toString( 16 ) }
+						onClick={ onClick( i + 1 ) }
+						icon={ route.icon }
+						to={ route.href }
+						selected={ value === i + 1 }
+					/>
+				) ) }
+			</div>
 
-				<BottomLink
-					onClick={ onClick( 2 ) }
-					icon={ <FiShoppingCart size={ 24 }/> }
-					to={ "#" }
-					selected={ value === 2 }
-				/>
-
-				<BottomLink
-					onClick={ onClick( 3 ) }
-					icon={ <BsTrophy size={ 24 }/> }
-					to={ "#" }
-					selected={ value === 3 }
-				/>
-
-				<BottomLink
-					onClick={ onClick( 4 ) }
-					icon={ <FiUser size={ 24 }/> }
-					to={ "#" }
-					selected={ value === 4 }
-				/>
-
+			<nav className={ classnames( styles[ 'bottom-menu' ] ) }>
 				<div className={ classnames( styles[ 'svg-animation' ], styles[ `column-${ value }` ] ) }>
 					{ genSvg( win ) }
 				</div>
-			</div>
-		</nav>
+			</nav>
+		</div>
 	);
 }
 
 function genSvg( windowWidth: number = 1024 ) {
 	const size = _.clamp( windowWidth / 4, 40, 115 )
-	const width = size;
+	const width = windowWidth;
 	const height = size > 60 ? 60 : size;
 	const R = size / 4;
 
@@ -80,9 +65,14 @@ function genSvg( windowWidth: number = 1024 ) {
 
 		return [
 			`M 0 0`,
+			`h ${ width / 2 }`,
 			arc( R, R ),
 			arc( 2 * R, 0, true ),
 			arc( R, -R ),
+			`h ${ width / 2 }`,
+			`v ${ height + R / 2 }`,
+			`h ${ -width - width }`,
+			`v ${ -height - R / 2 }`,
 			`Z`
 		].join( ' ' )
 	}
@@ -91,7 +81,9 @@ function genSvg( windowWidth: number = 1024 ) {
 
 	return (
 		<svg width={ width } height={ height }>
-			<path d={ d } fill="white"/>
+			<clipPath id="menumask">
+				<path d={ d }/>
+			</clipPath>
 		</svg>
 	)
 }
