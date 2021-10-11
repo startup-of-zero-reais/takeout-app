@@ -14,7 +14,19 @@ export const customPalettes = ( k: keyof typeof colors ) => colors[ k ]
 
 export const theme = createTheme( {
 	palette: {
-		mode: 'light'
+		mode: 'light',
+		primary: {
+			main: customPalettes('redVermilionBird'),
+		}
+	},
+	components:{
+		MuiButton:{
+			styleOverrides:{
+				root:{
+					borderRadius: 10
+				}
+			},
+		}
 	}
-} )
+})
 
