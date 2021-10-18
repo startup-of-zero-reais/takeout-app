@@ -1,0 +1,22 @@
+.search-bar {
+  display: grid;
+  grid-template-columns: auto 50px;
+  place-content: stretch;
+  place-items: stretch;
+  gap: var(--spacing-sm);
+  padding: 0 var(--padding-sm);
+
+  > div {
+    display: flex;
+
+    &[class^="MuiFormControl-root"] {
+      background-color: var(--ToGoContainer);
+    }
+
+    > button {
+      width: 100%;
+      background-color: var(--ToGoContainer);
+      border-radius: var(--radii-sm);
+    }
+  }
+}

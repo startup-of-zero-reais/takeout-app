@@ -1,0 +1,75 @@
+@import './src/styles/colors';
+
+.category-bullets-wrapper {
+	display: grid;
+	grid-template-rows: auto auto;
+
+	> h1 {
+		margin-top: var(--spacing-sm);
+		margin-left: var(--spacing-sm);
+		font-family: "Bluu Suuperstar", serif;
+	}
+}
+
+.category-bullets {
+	width: 100%;
+	overflow-x: scroll;
+	margin-bottom: var(--spacing-sm);
+	padding: 0 var(--padding-sm);
+
+	.bullets-inner-scroll {
+		display: flex;
+		flex-shrink: 0;
+		flex-grow: 0;
+		flex-wrap: nowrap;
+		gap: var(--spacing-xs);
+		padding: var(--padding-xs) 0;
+
+		> button {
+			padding: var(--padding-xs) var(--padding-sm);
+			font-weight: bold;
+			white-space: nowrap;
+			font-family: 'SF Pro Display', sans-serif;
+			font-size: 15px;
+			border-radius: var(--radii-sm);
+			border: none;
+			cursor: pointer;
+			transition: box-shadow 200ms, color 200ms, background-color 200ms;
+
+			background-color: #{$ToGoContainer};
+			color: #{$DeepGray};
+			box-shadow: 0 0 6px #{$redVermilionBird}00;
+
+			&:hover {
+				background-color: #{$BronzeRitual};
+				color: white;
+				box-shadow: 0 4px 6px #{$BronzeRitual}70;
+			}
+
+			&.active {
+				background-color: #{$redVermilionBird};
+				color: white;
+				box-shadow: 0 4px 6px #{$redVermilionBird}70;
+			}
+
+			&:last-child {
+				margin-right: var(--spacing-md);
+			}
+		}
+	}
+
+	&::-webkit-scrollbar {
+		height: 3px;
+		width: 3px;
+		border-radius: var(--radii-xs);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		transition: all 200ms ease-in-out;
+		background-color: transparent;
+	}
+
+	&:hover::-webkit-scrollbar-thumb {
+		background-color: var(--ToGoContainer);
+	}
+}

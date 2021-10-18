@@ -1,0 +1,36 @@
+.header-menu {
+  display: grid;
+  grid-template-columns: auto 80px;
+  place-content: space-between;
+  place-items: center;
+  padding: var(--padding-sm);
+
+  > h1 {
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    color: var(--DeepGray);
+
+    > button > span {
+      font-family: "Bluu Suuperstar", serif;
+      font-weight: bold;
+      font-size: 20px;
+      color: var(--BlackTortoise);
+    }
+  }
+}
+
+.basket {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+
+  .badge {
+    background-color: var(--redVermilionBird);
+    color: white;
+    border-radius: var(--radii-md);
+    padding: 0 var(--padding-xs);
+    font-size: 10px;
+  }
+}
