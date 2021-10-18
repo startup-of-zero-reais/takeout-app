@@ -1,34 +1,20 @@
-import { useEffect, useState } from 'react';
-import _ from 'lodash';
-import styles from './style.module.scss';
+import { useState } from 'react';
 import { classnames } from "@src/components";
-import { BottomLink } from "./bottom-link";
 import { getRoutes, RouteNames } from "@src/routes";
+import { BottomLink } from "./bottom-link";
+import styles from './style.module.scss';
 
 type BottomNavigatorProps = {}
 
 const routes: RouteNames[] = [ 'home', 'cart', 'prizes', 'profile' ];
 
 export const BottomNavigator = ( _: BottomNavigatorProps ) => {
-	const [ win, setWin ] = useState<number>( 1024 );
 	const [ value, setValue ] = useState( 0 )
 
 	const onClick = ( v: number ) => ( e: any ) => {
 		e.preventDefault();
 		setValue( v )
 	}
-
-	useEffect( () => {
-		function listenResize( this: Window ) {
-			setWin( this.window.innerWidth )
-		}
-
-		addEventListener( 'resize', listenResize )
-
-		return () => {
-			removeEventListener( 'resize', listenResize )
-		}
-	}, [] )
 
 	return (
 		<div className={ classnames( styles[ 'menu-wrapper' ] ) }>
@@ -42,48 +28,20 @@ export const BottomNavigator = ( _: BottomNavigatorProps ) => {
 						selected={ value === i + 1 }
 					/>
 				) ) }
-			</div>
-
-			<nav className={ classnames( styles[ 'bottom-menu' ] ) }>
 				<div className={ classnames( styles[ 'svg-animation' ], styles[ `column-${ value }` ] ) }>
-					{ genSvg( win ) }
+					<div>
+						<svg xmlns="http://www.w3.org/2000/svg" width={0} height={0}>
+							<defs>
+								<clipPath id="menuMask"  clipPathUnits="objectBoundingBox">
+									<path d="M0 1V0C0 0 0.125 0 0.125 0.375C0.125 0.75 0.5 0.75 0.5 0.75C0.5 0.75 0.875 0.75 0.875 0.375C0.875 0 1 0 1 0V1H1Z"
+									      fill="white">
+									</path>
+								</clipPath>
+							</defs>
+						</svg>
+					</div>
 				</div>
-			</nav>
+			</div>
 		</div>
 	);
-}
-
-function genSvg( windowWidth: number = 1024 ) {
-	const size = _.clamp( windowWidth / 4, 40, 115 )
-	const width = windowWidth;
-	const height = size > 60 ? 60 : size;
-	const R = size / 4;
-
-	function makePath() {
-		const arc = ( x: number, y: number, reverse = false ) =>
-			`a ${ R } ${ R } 0 0 ${ reverse ? 0 : 1 } ${ x } ${ y }`
-
-		return [
-			`M 0 0`,
-			`h ${ width / 2 }`,
-			arc( R, R ),
-			arc( 2 * R, 0, true ),
-			arc( R, -R ),
-			`h ${ width / 2 }`,
-			`v ${ height + R / 2 }`,
-			`h ${ -width - width }`,
-			`v ${ -height - R / 2 }`,
-			`Z`
-		].join( ' ' )
-	}
-
-	const d = makePath()
-
-	return (
-		<svg width={ width } height={ height }>
-			<clipPath id="menumask">
-				<path d={ d }/>
-			</clipPath>
-		</svg>
-	)
 }

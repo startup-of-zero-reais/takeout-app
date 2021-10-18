@@ -12,6 +12,10 @@
     justify-items: center;
     margin: 0 auto;
     max-width: 768px;
+    position: relative;
+
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
 
     & > a {
       display: grid;
@@ -35,26 +39,58 @@
   }
 }
 
-.bottom-menu {
-  background-color: var(--redVermilionBird);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
-  border-radius: 8px 8px 0 0;
-  clip-path: url(#menumask);
+@mixin mask {
+  clip-path: url("#menuMask");
 }
 
+// TODO: Arrumar a animação do menu
 .svg-animation {
+  @import '../../../styles/globals.scss';
+
   position: absolute;
-  height: 60px;
+  width: 100%;
+  height: 70px;
+  margin: 0 auto;
   left: 0;
   top: 0;
   transition: all 400ms;
-  width: 25%;
   display: grid;
   justify-items: center;
+  place-items: center;
+
+  & > div {
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    height: 70px;
+  }
+
+  @media (min-width: 0) {
+  }
+  @media (min-width: 375px) {
+  }
+
+  @media (min-width: #{map-get($breakpoints, "sm")}px) {
+  }
+
+  @mixin afterBefore {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: var(--redVermilionBird);
+  }
+
+  &::before {
+    @include afterBefore();
+    right: calc(100% - 1px);
+  }
+
+  &::after {
+    @include afterBefore();
+    left: 0;
+  }
 
   &[class^="column-"] {
     transition: all 400ms;
@@ -68,8 +104,9 @@
   }
 
   & > svg {
-    align-self: center;
-    justify-items: center;
+    width: 80px;
+    height: 70px;
+    margin: 0 auto;
   }
 }
 
