@@ -1,5 +1,6 @@
-@import url('https://v1.fontapi.ir/css/SFProDisplay');
+@import '_fonts.scss';
 @import '_colors.scss';
+@import '_variables.scss';
 
 html,
 body {
@@ -22,6 +23,7 @@ a {
 
 h1, h2, h3, h4, h5, h6, p, a, {
   font-family: 'SF Pro Display', sans-serif;
+  color: #{$BlackTortoise};
 }
 
 :root {
@@ -32,9 +34,6 @@ h1, h2, h3, h4, h5, h6, p, a, {
   --YellowDragon: #FFC107;
   --SilverSycee: #A0A8B1;
   --BronzeRitual: #D97953;
-
-  $sizes: 'xs' 'sm' 'md' 'lg' 'xl' 'xxl' 'uxl' 'hxl';
-  $breakpoints: ('xs': 0, 'sm': 600, 'md': 900, 'lg': 1200, 'xl': 1536);
 
   $proportion: 8;
   @for $i from 0 through 7 {
