@@ -2,7 +2,7 @@
   @import "../../../styles/globals";
 
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 48px 1fr 48px;
   height: 40px;
   border: 1px solid #{$DeepGray}20;
   justify-content: flex-start;
