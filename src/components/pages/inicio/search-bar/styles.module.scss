@@ -1,3 +1,52 @@
+@import './src/styles/colors';
+
+.search-wrapper {
+  position: relative;
+
+  .search-suggest {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: white;
+    z-index: 99;
+    padding: var(--padding-md);
+    transform: translateY(100%);
+    transition: all 300ms ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: initial;
+    }
+
+    > h2 {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .recent-searches {
+      list-style: none;
+      padding: var(--padding-xs) 0;
+
+      & > li > a{
+        font-family: 'SF Pro Display', sans-serif;
+        text-transform: none;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 16px;
+        color: #{$redVermilionBird};
+        padding: var(--padding-xs) var(--padding-sm);
+      }
+    }
+  }
+}
+
 .search-bar {
   display: grid;
   grid-template-columns: auto 50px;
