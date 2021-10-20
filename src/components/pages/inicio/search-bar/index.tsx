@@ -1,25 +1,30 @@
-import React, { useCallback, useState } from 'react';
-import { TextField, InputAdornment, IconButton, Button } from "@material-ui/core";
+import React from 'react';
+import { TextField, InputAdornment, IconButton } from "@material-ui/core";
 import { FiMic, FiSearch } from "react-icons/fi";
 import { HiOutlineAdjustments } from "react-icons/hi";
-import { AiOutlineClockCircle, AiOutlineClose } from "react-icons/ai";
 import { classnames, RenderIf } from "@src/components";
+import { RecentSearches } from "./recent-searches";
+import { FiltersConfig } from "./filters-config";
 import styles from './styles.module.scss';
+import { filtersHandlers, searchHandlers } from "./handlers";
 
 export const SearchBar = () => {
-	const [ hasDisplay, setHasDisplay ] = useState( false )
-	const [ focused, setFocused ] = useState( false );
+	const {
+		focused,
+		hasDisplay,
+		handleDisplayOn,
+		handleDisplayOff,
+		handleFocusOut
+	} = searchHandlers()
 
-	const handleDisplayOn = useCallback( () => {
-		setHasDisplay( true )
-		setTimeout( () => setFocused( true ) )
-	}, [] )
+	const {
+		opened,
+		handleCloseFilters,
+		hasFiltersDisplay,
+		handleCloseFiltersDisplay,
+		handleShowFiltersDisplay
+	} = filtersHandlers()
 
-	const handleDisplayOff = useCallback( () => {
-		if ( !focused ) {
-			setHasDisplay( false )
-		}
-	}, [ focused ] )
 
 	return (
 		<div className={ classnames( styles[ 'search-wrapper' ] ) }>
@@ -47,49 +52,30 @@ export const SearchBar = () => {
 				/>
 
 				<div>
-					<IconButton>
+					<IconButton onClick={ handleShowFiltersDisplay }>
 						<HiOutlineAdjustments/>
 					</IconButton>
 				</div>
 			</div>
 
 			{ RenderIf( hasDisplay, (
-				<div
-					className={ classnames(
-						styles[ 'search-suggest' ],
-						{ [ styles[ 'active' ] ]: focused }
-					) }
-					onAnimationEnd={ handleDisplayOff }
-				>
-					<h2>
-						Buscas recentes
-						<IconButton onClick={ () => setFocused( false ) }>
-							<AiOutlineClose/>
-						</IconButton>
-					</h2>
+				<RecentSearches
+					handleDisplayOff={ handleDisplayOff }
+					focused={ focused }
+					setFocusOut={ handleFocusOut }
+				/>
+			) ) }
 
-					<ul className={ classnames( styles[ 'recent-searches' ] ) }>
-						<li>
-							<Button href={ "#" }>
-								Sushi
-								<AiOutlineClockCircle/>
-							</Button>
-						</li>
-						<li>
-							<Button href={ "#" }>
-								Pizza
-								<AiOutlineClockCircle/>
-							</Button>
-						</li>
-						<li>
-							<Button href={ "#" }>
-								Lanche
-								<AiOutlineClockCircle/>
-							</Button>
-						</li>
-					</ul>
-				</div>
+			{ RenderIf( hasFiltersDisplay, (
+				<FiltersConfig
+					opened={ opened }
+					close={ handleCloseFilters }
+					onClose={ handleCloseFiltersDisplay }
+				/>
 			) ) }
 		</div>
 	);
 }
+
+
+
