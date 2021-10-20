@@ -81,9 +81,11 @@
 	z-index: 99;
 	opacity: 0;
 	transition: opacity 200ms ease-in;
+	pointer-events: none;
 
 	&.overlay-active {
 		opacity: 1;
+		pointer-events: initial;
 	}
 
 	.box {
@@ -94,6 +96,7 @@
 		right: 0;
 		transform: translateY(-100%);
 		transition: transform 300ms ease;
+		pointer-events: none;
 
 		border-bottom-left-radius: var(--radii-md);
 		border-bottom-right-radius: var(--radii-md);
@@ -115,6 +118,7 @@
 
 		&.box-active {
 			transform: translateY(0);
+			pointer-events: initial;
 		}
 	}
 }
