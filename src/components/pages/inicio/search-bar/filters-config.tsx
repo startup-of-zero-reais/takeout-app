@@ -90,6 +90,9 @@ export const FiltersConfig = ( { opened = false, onClose, close }: FiltersConfig
                             <Button>
                                 Express 2
                             </Button>
+                            <Button>
+                                Trivia
+                            </Button>
                         </div>
 
                         <div>
