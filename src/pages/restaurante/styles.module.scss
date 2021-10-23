@@ -1,0 +1,123 @@
+@import './src/styles/colors';
+
+.restaurant-search {
+	$buttonSize: 40px;
+	display: grid;
+	grid-template-columns: #{$buttonSize} auto;
+	align-items: center;
+	justify-content: stretch;
+	padding: var(--padding-sm);
+	gap: var(--spacing-xs);
+
+	> div {
+		display: grid;
+		grid-template-columns: calc(100% - #{$buttonSize}) #{$buttonSize};
+		justify-content: flex-end;
+		gap: var(--spacing-xs);
+		margin-left: var(--spacing-xs);
+
+		.search-field {
+			width: 0;
+			display: grid;
+			justify-content: stretch;
+			align-items: stretch;
+			opacity: 0;
+			pointer-events: none;
+			transition: all 200ms ease-in;
+			transform-origin: right center;
+
+			&.active {
+				width: 100%;
+				opacity: 1;
+				pointer-events: initial;
+			}
+		}
+	}
+}
+
+.restaurant-info {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	padding: 0 var(--padding-sm);
+
+	> h1 {
+		font-family: 'Bluu Suuperstar', serif;
+		line-height: 18px;
+	}
+
+	> p {
+		display: flex;
+		gap: var(--spacing-xs);
+		margin: var(--spacing-xs) 0;
+
+		> small {
+			position: relative;
+			color: #{$DeepGray};
+			font-size: 15px;
+
+			&:not(&:last-child)::after {
+				content: "\2022";
+				margin-left: var(--spacing-xs);
+			}
+		}
+	}
+
+	> div {
+		display: flex;
+		gap: var(--spacing-xs);
+
+		> span {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #{$ToGoContainer};
+			padding: 2px var(--padding-xs);
+			border-radius: var(--radii-md);
+			gap: var(--spacing-xs);
+		}
+	}
+}
+
+.restaurant-ranking {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: var(--spacing-sm);
+	margin: var(--spacing-md) 0;
+	padding: 0 var(--spacing-sm);
+
+
+	> div {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+		align-items: stretch;
+
+		> span {
+			background-color: #{$ToGoContainer};
+			border-radius: var(--radii-sm);
+			text-align: center;
+		}
+	}
+
+	.avatars-group {
+		align-items: center;
+	}
+}
+
+.full-ranking-btn-wrapper {
+	padding: var(--padding-sm);
+	display: grid;
+
+	> button, > a {
+		font-size: 18px;
+		font-family: 'SF Pro Display', sans-serif;
+		text-transform: initial;
+		font-weight: normal;
+		line-height: 20px;
+		align-items: center;
+		justify-content: space-between;
+		box-shadow: none;
+		background-color: #{$ToGoContainer};
+	}
+}
