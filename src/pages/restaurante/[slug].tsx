@@ -5,14 +5,22 @@ import { NextPageContext } from "next";
 import { FaClock, FaDollarSign, FaStar } from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
 import { useRouter } from "next/router";
-import { classnames, MainGrid, Avatar } from "@src/components";
+import { classnames, MainGrid, RankingAvatar } from "@src/components";
 import styles from './styles.module.scss'
+
+type RankingModel = {
+	id: string;
+	avatar: string;
+	position: number;
+}
 
 type RestaurantPageProps = {
 	restaurant: string;
+	customerRanking: RankingModel[];
+	myRanking: RankingModel;
 }
 
-const RestaurantPage = ( { restaurant }: RestaurantPageProps ) => {
+const RestaurantPage = ( { restaurant, customerRanking, myRanking }: RestaurantPageProps ) => {
 	const router = useRouter()
 	const searchInputRef = useRef<HTMLInputElement>()
 
@@ -76,27 +84,31 @@ const RestaurantPage = ( { restaurant }: RestaurantPageProps ) => {
 				<div>
 					<span>Ranking do restaurante</span>
 					<div className={ classnames( styles[ 'avatars-group' ] ) }>
-						<Avatar
-							src={ "/avatar-1.jpg" }
-							size={ 60 }
-						/>
-						<Avatar
-							src={ "/avatar-2.jpg" }
-							size={ 60 }
-						/>
-						<Avatar
-							src={ "/avatar-3.jpg" }
-							size={ 60 }
-						/>
+						{ customerRanking?.map( ( customer ) => (
+							<RankingAvatar
+								key={ customer.id }
+								src={ customer.avatar }
+								badgeComponent={ `${ customer.position }º` }
+								first={ customer.position === 1 }
+								second={ customer.position === 2 }
+								third={ customer.position === 3 }
+							/>
+						) ) }
 					</div>
 				</div>
 				<div>
 					<span>Meu ranking</span>
 					<div className={ classnames( styles[ 'avatars-group' ] ) }>
-						<Avatar
-							src={ "/avatar-4.jpg" }
-							size={ 60 }
-						/>
+						{ myRanking && (
+							<RankingAvatar
+								src={ myRanking.avatar }
+								badgeComponent={ (
+									<>
+										<FaStar size={ 12 }/>2
+									</>
+								) }
+							/>
+						) }
 					</div>
 				</div>
 			</div>
@@ -117,7 +129,29 @@ const RestaurantPage = ( { restaurant }: RestaurantPageProps ) => {
 RestaurantPage.getInitialProps = async ( _: NextPageContext ) => {
 
 	return {
-		restaurant: 'Katsuei'
+		restaurant: 'Katsuei',
+		customerRanking: [
+			{
+				id: '123456',
+				avatar: '/avatar-1.jpg',
+				position: 1
+			},
+			{
+				id: '123457',
+				avatar: '/avatar-2.jpg',
+				position: 2
+			},
+			{
+				id: '123458',
+				avatar: '/avatar-3.jpg',
+				position: 3
+			},
+		],
+		myRanking: {
+			id: '123459',
+			avatar: '/avatar-4.jpg',
+			position: 7
+		}
 	}
 }
 
