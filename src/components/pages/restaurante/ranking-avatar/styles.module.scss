@@ -1,0 +1,35 @@
+@import './src/styles/colors';
+
+.avatar-badge {
+	$size: 32px;
+	width: #{$size};
+	height: #{$size};
+	line-height: #{$size - 5};
+	text-align: center;
+	border: 3px solid #ffffff;
+	bottom: -#{$size / 2} !important;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+
+	&.first {
+		background-color: #{$YellowDragon};
+	}
+
+	&.second {
+		background-color: #{$SilverSycee};
+	}
+
+	&.third {
+		background-color: #{$BronzeRitual};
+	}
+
+	&.my-own {
+		display: flex;
+		background-color: #{$redVermilionBird};
+		font-size: 12px;
+		gap: 2px;
+		align-items: center;
+		justify-content: center;
+	}
+}
