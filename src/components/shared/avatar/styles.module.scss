@@ -1,0 +1,47 @@
+.avatar {
+	display: block;
+	margin-right: 4px;
+	position: relative;
+
+	> div {
+		border-radius: var(--radii-full);
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		border-radius: var(--radii-full);
+		background-color: #E92F48;
+	}
+
+	&.top:after {
+		top: 0;
+	}
+
+	&.middle:after {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&.bottom:after {
+		bottom: 0;
+	}
+
+	&.left:after {
+		left: 0;
+	}
+
+	&.center:after {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&.right:after {
+		right: 0;
+	}
+}
+
+.badge {
+}
