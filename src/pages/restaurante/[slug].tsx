@@ -1,12 +1,12 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { Avatar, AvatarGroup, Button, IconButton, TextField } from "@material-ui/core";
+import { Button, IconButton, TextField } from "@material-ui/core";
 import { IoArrowBackSharp, IoClose, IoSearch } from "react-icons/io5";
-import { classnames, MainGrid } from "@src/components";
-import styles from './styles.module.scss'
 import { NextPageContext } from "next";
 import { FaClock, FaDollarSign, FaStar } from "react-icons/fa";
-import { FiChevronRight } from "react-icons/all";
+import { FiChevronRight } from "react-icons/fi";
 import { useRouter } from "next/router";
+import { classnames, MainGrid, Avatar } from "@src/components";
+import styles from './styles.module.scss'
 
 type RestaurantPageProps = {
 	restaurant: string;
@@ -76,17 +76,27 @@ const RestaurantPage = ( { restaurant }: RestaurantPageProps ) => {
 				<div>
 					<span>Ranking do restaurante</span>
 					<div className={ classnames( styles[ 'avatars-group' ] ) }>
-						<AvatarGroup>
-							<Avatar src={ "/avatar-1.jpg" }/>
-							<Avatar src={ "/avatar-2.jpg" }/>
-							<Avatar src={ "/avatar-3.jpg" }/>
-						</AvatarGroup>
+						<Avatar
+							src={ "/avatar-1.jpg" }
+							size={ 60 }
+						/>
+						<Avatar
+							src={ "/avatar-2.jpg" }
+							size={ 60 }
+						/>
+						<Avatar
+							src={ "/avatar-3.jpg" }
+							size={ 60 }
+						/>
 					</div>
 				</div>
 				<div>
 					<span>Meu ranking</span>
-					<div>
-						<Avatar src={ "/avatar-4.jpg" }/>
+					<div className={ classnames( styles[ 'avatars-group' ] ) }>
+						<Avatar
+							src={ "/avatar-4.jpg" }
+							size={ 60 }
+						/>
 					</div>
 				</div>
 			</div>
