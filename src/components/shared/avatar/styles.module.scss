@@ -1,3 +1,5 @@
+@import './src/styles/colors';
+
 .avatar {
 	display: block;
 	margin-right: 4px;
@@ -6,7 +8,9 @@
 	> div {
 		border-radius: var(--radii-full);
 	}
+}
 
+.avatar-simple-badge {
 	&:after {
 		content: "";
 		position: absolute;
@@ -44,4 +48,34 @@
 }
 
 .badge {
+	position: absolute;
+	border-radius: var(--radii-full);
+	min-width: 10px;
+	min-height: 10px;
+
+	&.top {
+		top: 0;
+	}
+
+	&.middle {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&.bottom {
+		bottom: 0;
+	}
+
+	&.left {
+		left: 0;
+	}
+
+	&.center {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&.right {
+		right: 0;
+	}
 }

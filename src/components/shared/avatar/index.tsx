@@ -35,16 +35,23 @@ export const Avatar = (
 		imageClassName = '',
 		badge = {
 			model: 'simple',
-			anchorPoints: { vertical: 'bottom', horizontal: 'right' }
+			anchorPoints: { vertical: 'bottom', horizontal: 'right' },
+			className: ''
 		}
 	}: AvatarProps
 ) => {
+
+	const simpleBadgeClassnames = classnames(
+		{ [ styles[ 'avatar-simple-badge' ] ]: badge.model === 'simple' },
+		styles[ badge.anchorPoints!.horizontal ],
+		styles[ badge.anchorPoints!.vertical ],
+	)
+
 	return (
 		<div className={
 			classnames(
 				styles[ 'avatar' ],
-				styles[ badge.anchorPoints!.horizontal ],
-				styles[ badge.anchorPoints!.vertical ],
+				simpleBadgeClassnames,
 				wrapperClassName
 			)
 		}>
@@ -62,7 +69,12 @@ export const Avatar = (
 
 			{ badge &&
 			RenderIf( badge.model === 'custom', (
-				<div className={ classnames( styles[ 'badge' ] ) }>
+				<div className={ classnames(
+					badge.className!,
+					styles[ badge.anchorPoints!.horizontal ],
+					styles[ badge.anchorPoints!.vertical ],
+					styles[ 'badge' ],
+				) }>
 					{ badge.customComponent }
 				</div>
 			) ) }
