@@ -123,3 +123,53 @@
 		background-color: #{$ToGoContainer};
 	}
 }
+
+.popular-foods {
+	border-top: 1px solid #{$ToGoContainer};
+	border-bottom: 1px solid #{$ToGoContainer};
+	padding: var(--padding-md) 0;
+	margin: var(--spacing-md) 0;
+
+	> h1 {
+		margin: 0 var(--spacing-md);
+		font-size: 24px;
+	}
+
+	.horizontal-scroll {
+		display: grid;
+		align-items: center;
+		overflow-x: scroll;
+		scroll-snap-type: x mandatory;
+
+		&::-webkit-scrollbar {
+			height: 5px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: #{$ToGoContainer};
+			border-radius: var(--radii-xs);
+		}
+
+		> div {
+			display: flex;
+			flex-wrap: nowrap;
+			flex-shrink: 0;
+		}
+
+		.popular-food-card {
+			scroll-snap-align: start;
+			width: 90vw;
+			padding: var(--padding-sm) 0 var(--padding-sm) var(--padding-md);
+			display: flex;
+			flex-direction: column;
+
+			> div {
+				border-radius: var(--radii-sm);
+			}
+
+			> h2 {
+				margin-top: var(--spacing-xs);
+			}
+		}
+	}
+}

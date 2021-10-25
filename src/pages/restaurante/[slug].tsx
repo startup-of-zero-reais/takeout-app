@@ -5,6 +5,7 @@ import { NextPageContext } from "next";
 import { FaClock, FaDollarSign, FaStar } from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { classnames, MainGrid, RankingAvatar } from "@src/components";
 import styles from './styles.module.scss'
 
@@ -121,6 +122,33 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking }: RestaurantP
 				>
 					Ver ranking completo
 				</Button>
+			</div>
+
+			<div className={ classnames( styles[ 'popular-foods' ] ) }>
+				<h1>Popular</h1>
+
+				<div className={ classnames( styles[ 'horizontal-scroll' ] ) }>
+					<div>
+						{ [ 1, 2, 3 ].map( ( _, k ) => (
+							<div key={ k.toString() } className={ classnames( styles[ 'popular-food-card' ] ) }>
+								<Image
+									src={ "/food-1.jpg" }
+									alt={ "Image" }
+									layout={ "responsive" }
+									width={ 335 }
+									height={ 150 }
+									objectFit={ "cover" }
+								/>
+
+								<h2>Salmon sushi</h2>
+								<p>Smoked salmon over rice</p>
+								<span>
+								R$ 5,99
+							</span>
+							</div>
+						) ) }
+					</div>
+				</div>
 			</div>
 		</MainGrid>
 	);
