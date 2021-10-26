@@ -1,2 +1,18 @@
+@import './src/styles/colors';
+
 $sizes: 'xs' 'sm' 'md' 'lg' 'xl' 'xxl' 'uxl' 'hxl';
 $breakpoints: ('xs': 0, 'sm': 600, 'md': 900, 'lg': 1200, 'xl': 1536);
+
+@mixin styled-scrollbar {
+
+	&::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: var(--radii-sm);
+		background-color: #{$ToGoContainer};
+	}
+
+}
