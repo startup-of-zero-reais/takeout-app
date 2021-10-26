@@ -1,4 +1,5 @@
 @import './src/styles/colors';
+@import './src/styles/variables';
 
 .restaurant-search {
 	$buttonSize: 40px;
@@ -141,14 +142,7 @@
 		overflow-x: scroll;
 		scroll-snap-type: x mandatory;
 
-		&::-webkit-scrollbar {
-			height: 5px;
-		}
-
-		&::-webkit-scrollbar-thumb {
-			background-color: #{$ToGoContainer};
-			border-radius: var(--radii-xs);
-		}
+		@include styled-scrollbar();
 
 		> div {
 			display: flex;
@@ -170,6 +164,91 @@
 			> h2 {
 				margin-top: var(--spacing-xs);
 			}
+		}
+	}
+}
+
+.food-menu {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-md);
+
+	.food-menu-horizontal-scroll {
+		display: flex;
+		flex-wrap: nowrap;
+		flex-shrink: 0;
+		padding: 0 var(--padding-md);
+		padding-bottom: var(--padding-xs);
+		overflow-x: scroll;
+		@include styled-scrollbar();
+
+		> div {
+			display: flex;
+			gap: var(--spacing-xs);
+
+			> button {
+				white-space: nowrap;
+				text-transform: initial;
+				color: #{$DeepGray};
+				font-size: 18px;
+				font-family: 'SF Pro Display', sans-serif;
+				font-weight: bold;
+
+				&.active {
+					color: #{$BlackTortoise};
+				}
+			}
+		}
+	}
+
+	.menu-section {
+		padding: 0 var(--padding-md);
+
+		padding-bottom: 180px;
+
+		.menu-subsection {
+			@extend .menu-subsection
+		}
+	}
+}
+
+.menu-subsection {
+	width: 100%;
+	align-items: stretch;
+
+	> h2 {
+		margin: var(--spacing-sm) 0;
+	}
+
+	> button {
+		width: 100%;
+		padding: var(--padding-xs) 0;
+		border-radius: 0;
+		border-bottom: 1px solid #{$ToGoContainer};
+
+		> div {
+			display: flex;
+			flex: 1;
+			text-transform: initial;
+			flex-direction: column;
+			align-items: flex-start;
+			color: #{$DeepGray};
+			font-weight: normal;
+			transition: text-indent 200ms ease-out;
+
+			> h3 {
+				color: #{$BlackTortoise};
+			}
+
+			&:hover {
+				text-indent: 10px;
+			}
+		}
+
+		> div:nth-child(2) {
+			align-items: flex-end;
+			flex-grow: 0;
+			margin-right: var(--spacing-md);
 		}
 	}
 }

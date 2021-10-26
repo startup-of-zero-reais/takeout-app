@@ -4,6 +4,7 @@ import { IoArrowBackSharp, IoClose, IoSearch } from "react-icons/io5";
 import { NextPageContext } from "next";
 import { FaClock, FaDollarSign, FaStar } from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
+import { GiShoppingBag } from "react-icons/gi";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { classnames, MainGrid, RankingAvatar } from "@src/components";
@@ -19,9 +20,10 @@ type RestaurantPageProps = {
 	restaurant: string;
 	customerRanking: RankingModel[];
 	myRanking: RankingModel;
+	foodMenu: string[];
 }
 
-const RestaurantPage = ( { restaurant, customerRanking, myRanking }: RestaurantPageProps ) => {
+const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: RestaurantPageProps ) => {
 	const router = useRouter()
 	const searchInputRef = useRef<HTMLInputElement>()
 
@@ -150,6 +152,53 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking }: RestaurantP
 					</div>
 				</div>
 			</div>
+
+			<div className={ classnames( styles[ 'food-menu' ] ) }>
+				<div className={ classnames( styles[ 'food-menu-horizontal-scroll' ] ) }>
+					<div>
+						{ foodMenu.map( ( category, k ) => (
+							<Button
+								key={ k.toString() }
+								className={ classnames(
+									{ [ styles[ 'active' ] ]: k === 0 }
+								) }
+							>
+								{ category }
+							</Button>
+						) ) }
+					</div>
+				</div>
+
+				<section className={ classnames( styles[ 'menu-section' ] ) }>
+					{ foodMenu.map( ( category, kk ) => (
+						<div key={ kk.toString() } className={ classnames( styles[ 'menu-subsection' ] ) }>
+							<h2>{ category }</h2>
+							{ [ 1, 2, 3, 4 ].map( ( _, k ) => (
+
+								<Button key={ k.toString() }>
+									<div>
+										<h3>California Roll</h3>
+										<small>Smoked salmon over rice</small>
+										<span>R$ 5,99</span>
+									</div>
+
+									<div>
+										{
+											k !== 1
+												? (
+													<GiShoppingBag size={ 24 }/>
+												)
+												: (
+													<h1>On the cart</h1>
+												)
+										}
+									</div>
+								</Button>
+							) ) }
+						</div>
+					) ) }
+				</section>
+			</div>
 		</MainGrid>
 	);
 }
@@ -179,7 +228,8 @@ RestaurantPage.getInitialProps = async ( _: NextPageContext ) => {
 			id: '123459',
 			avatar: '/avatar-4.jpg',
 			position: 7
-		}
+		},
+		foodMenu: [ 'Sushi rolls', 'Bento boxes', 'Soups', 'Sashimis', 'Temakis', 'Combos', 'Nissin' ]
 	}
 }
 
