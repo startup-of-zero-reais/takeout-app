@@ -1,12 +1,13 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Button, IconButton, TextField } from "@material-ui/core";
 import { IoArrowBackSharp, IoClose, IoSearch } from "react-icons/io5";
 import { NextPageContext } from "next";
+import Image from 'next/image';
 import { FaClock, FaDollarSign, FaStar } from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
 import { GiShoppingBag } from "react-icons/gi";
+import { MdAdd, MdRemove } from "react-icons/md";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { classnames, MainGrid, RankingAvatar } from "@src/components";
 import styles from './styles.module.scss'
 
@@ -174,26 +175,28 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 						<div key={ kk.toString() } className={ classnames( styles[ 'menu-subsection' ] ) }>
 							<h2>{ category }</h2>
 							{ [ 1, 2, 3, 4 ].map( ( _, k ) => (
-
-								<Button key={ k.toString() }>
-									<div>
-										<h3>California Roll</h3>
-										<small>Smoked salmon over rice</small>
-										<span>R$ 5,99</span>
+								<button type={ "button" } key={ k.toString() }>
+									<div className={ classnames( styles[ 'food-button-info' ] ) }>
+										<div>
+											<Image
+												src={ "/food-1.jpg" }
+												layout={ "responsive" }
+												objectFit={ "cover" }
+												width={ 40 } height={ 40 }
+												alt={ "food1" }
+											/>
+										</div>
+										<div>
+											<h3>California Roll</h3>
+											<small>Smoked salmon over rice</small>
+											<span>R$ 5,99</span>
+										</div>
 									</div>
 
 									<div>
-										{
-											k !== 1
-												? (
-													<GiShoppingBag size={ 24 }/>
-												)
-												: (
-													<h1>On the cart</h1>
-												)
-										}
+										<HandleCart />
 									</div>
-								</Button>
+								</button>
 							) ) }
 						</div>
 					) ) }
@@ -201,6 +204,64 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 			</div>
 		</MainGrid>
 	);
+}
+
+type HandleCartProps = {
+	isOnCart?: boolean
+}
+
+const HandleCart = ( { isOnCart = false }: HandleCartProps ) => {
+	const id = useMemo( () =>
+			(Math.random() * 0x100000)
+				.toString( 16 )
+				.replace( /\./, '-' ),
+		[]
+	)
+
+	const [ onCart, setOnCart ] = useState(isOnCart);
+	const [ qtd, setQtd ] = useState( 1 );
+
+	const handleAddToCart = useCallback(() => setOnCart(true), [])
+	const handleRemoveFromCart = useCallback(() => setOnCart(false), [])
+
+	const handleChangeQtd = useCallback( ( newQtd: number ) => {
+		if (newQtd <= 0) {
+			handleRemoveFromCart()
+			return;
+		}
+
+		setQtd( newQtd )
+	}, [ handleRemoveFromCart ] )
+
+	const handleIncrement = useCallback(
+		() => handleChangeQtd( qtd + 1 ),
+		[ handleChangeQtd, qtd ]
+	);
+
+	const handleDecrement = useCallback(
+		() => handleChangeQtd( qtd - 1 ),
+		[ handleChangeQtd, qtd ]
+	);
+
+	if ( onCart ) {
+		return (
+			<div className={ classnames( styles[ 'is-on-cart' ] ) }>
+				<IconButton onClick={ handleDecrement }>
+					<MdRemove/>
+				</IconButton>
+				<label htmlFor={ `quantity-${ id }` }>{ qtd }</label>
+				<IconButton onClick={ handleIncrement }>
+					<MdAdd/>
+				</IconButton>
+			</div>
+		)
+	}
+
+	return (
+		<IconButton onClick={handleAddToCart}>
+			<GiShoppingBag size={ 24 }/>
+		</IconButton>
+	)
 }
 
 RestaurantPage.getInitialProps = async ( _: NextPageContext ) => {
