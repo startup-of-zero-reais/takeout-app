@@ -1,20 +1,17 @@
 import React from 'react';
-import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
-import createCache from '@emotion/cache';
+import { createEmotionCache } from "@src/components";
 
-export function createEmotionCache() {
-	return createCache({ key: 'css' })
-}
-
-class MyDoc extends Document {
+class MyDocument extends Document {
 	render() {
 		return (
-			<Html lang='pt-br'>
+			<Html lang="pt-br">
 				<Head>
-					<link rel="stylesheet"
-					      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-					<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+					<link
+						rel="stylesheet"
+						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+					/>
 				</Head>
 				<body>
 				<Main />
@@ -25,7 +22,7 @@ class MyDoc extends Document {
 	}
 }
 
-MyDoc.getInitialProps = async ( ctx: DocumentContext ) => {
+MyDocument.getInitialProps = async ( ctx ) => {
 	const originalRenderPage = ctx.renderPage;
 
 	const cache = createEmotionCache()
@@ -55,4 +52,4 @@ MyDoc.getInitialProps = async ( ctx: DocumentContext ) => {
 
 }
 
-export default MyDoc;
+export default MyDocument;
