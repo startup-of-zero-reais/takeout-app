@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Button, IconButton } from "@material-ui/core";
+import { Button, IconButton } from "@mui/material";
 import { AiOutlineClose } from "react-icons/ai";
 import { classnames } from "@src/components";
 import { TabButton } from "./tab-button";

@@ -1,8 +1,8 @@
 import React from 'react';
 import { classnames } from "@src/components";
-import styles from "@src/components/pages/inicio/search-bar/styles.module.scss";
-import { Button, IconButton } from "@material-ui/core";
+import { Button, IconButton } from "@mui/material";
 import { AiOutlineClockCircle, AiOutlineClose } from "react-icons/ai";
+import styles from "./styles.module.scss";
 
 type RecentSearchesProps = {
 	focused: boolean;

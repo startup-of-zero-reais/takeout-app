@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton, InputAdornment, TextField } from "@material-ui/core";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { FiMic, FiSearch } from "react-icons/fi";
 import { HiOutlineAdjustments } from "react-icons/hi";
 import { classnames, RenderIf } from "@src/components";

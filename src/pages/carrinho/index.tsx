@@ -3,7 +3,7 @@ import { classnames, HeaderNavigator, MainGrid } from "@src/components";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { HiPlus } from "react-icons/hi";
 import { BsBox } from "react-icons/bs";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import styles from "./styles.module.scss";
 
 const Cart = () => {

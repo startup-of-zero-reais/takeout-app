@@ -2,7 +2,7 @@ import React from 'react';
 import { classnames, HeaderNavigator, MainGrid } from "@src/components";
 import { IoArrowBackSharp } from "react-icons/io5";
 import styles from "@src/components/pages/endereco/styles.module.scss";
-import { IconButton, InputAdornment, TextField } from "@material-ui/core";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { FiMic, FiSearch } from "react-icons/fi";
 import { TiLocationArrow } from "react-icons/ti";
 import { ImLocation } from "react-icons/im";

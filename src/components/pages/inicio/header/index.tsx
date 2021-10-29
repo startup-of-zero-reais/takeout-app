@@ -4,7 +4,7 @@ import { FaShoppingBasket } from "react-icons/fa";
 import { AiOutlineCaretDown } from "react-icons/ai"
 import styles from './styles.module.scss'
 import { classnames } from "@src/components";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 
 export const HomeHeader = () => {
 	return (

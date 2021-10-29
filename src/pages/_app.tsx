@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 import Head from "next/head";
 import { EmotionCache } from "@emotion/utils";
 import { CacheProvider } from "@emotion/react";
-import { CssBaseline, ThemeProvider } from "@material-ui/core";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createEmotionCache } from '@src/pages/_document'
 import { theme } from "@src/styles/theme";
 import { BottomNavigator } from "@src/components";

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { classnames } from "@src/components";
-import styles from "@src/components/pages/inicio/search-bar/styles.module.scss";
+import styles from "./styles.module.scss";
 
 type TabButtonProps = {
 	children?: ReactNode;

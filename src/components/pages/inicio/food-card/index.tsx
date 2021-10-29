@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
-import { Avatar, AvatarGroup, Badge } from "@material-ui/core";
+import { Avatar, AvatarGroup, Badge } from "@mui/material";
 import { RiMotorbikeFill } from "react-icons/ri";
 import { FiStar } from "react-icons/fi";
 import { FaCheckCircle, FaShoppingBasket } from "react-icons/fa";
