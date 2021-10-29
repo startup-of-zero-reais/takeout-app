@@ -1,14 +1,12 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { Button, IconButton, TextField } from "@material-ui/core";
-import { IoArrowBackSharp, IoClose, IoSearch } from "react-icons/io5";
+import React, { useCallback, useRef, useState } from 'react';
+import { Button, IconButton, TextField } from "@mui/material";
 import { NextPageContext } from "next";
 import Image from 'next/image';
 import { FaClock, FaDollarSign, FaStar } from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
-import { GiShoppingBag } from "react-icons/gi";
-import { MdAdd, MdRemove } from "react-icons/md";
+import { IoArrowBackSharp, IoClose, IoSearch } from "react-icons/io5";
 import { useRouter } from "next/router";
-import { classnames, MainGrid, RankingAvatar } from "@src/components";
+import { classnames, MainGrid, RankingAvatar, CartHandler } from "@src/components";
 import styles from './styles.module.scss'
 
 type RankingModel = {
@@ -28,12 +26,12 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 	const router = useRouter()
 	const searchInputRef = useRef<HTMLInputElement>()
 
-	const [ searching, setSearching ] = useState( false )
+	const [ searching, setSearching ] = useState(false)
 
 	//const { slug } = router.query
 
-	const handleSearchClick = useCallback( () => {
-		setSearching( prevState => {
+	const handleSearchClick = useCallback(() => {
+		setSearching(prevState => {
 			if ( searchInputRef.current ) {
 				prevState
 					? searchInputRef.current.value = ''
@@ -41,14 +39,14 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 			}
 
 			return !prevState
-		} );
-	}, [] );
+		});
+	}, []);
 
 	return (
 		<MainGrid>
-			<div className={ classnames( styles[ 'restaurant-search' ] ) }>
+			<div className={ classnames(styles[ 'restaurant-search' ]) }>
 				<IconButton onClick={ router.back }>
-					<IoArrowBackSharp/>
+					<IoArrowBackSharp />
 				</IconButton>
 
 				<div>
@@ -65,30 +63,30 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 					</div>
 					<IconButton onClick={ handleSearchClick }>
 						{ !searching
-							? <IoSearch/>
-							: <IoClose/> }
+							? <IoSearch />
+							: <IoClose /> }
 					</IconButton>
 				</div>
 			</div>
 
-			<div className={ classnames( styles[ 'restaurant-info' ] ) }>
+			<div className={ classnames(styles[ 'restaurant-info' ]) }>
 				<h1>{ restaurant }</h1>
 				<p>
 					<small>Japonesa</small>
 					<small>Sushi</small>
 				</p>
 				<div>
-					<span><FaClock/> 10-20 min</span>
-					<span><FaDollarSign/> R$ 5,99</span>
-					<span><FaStar/> 4.8</span>
+					<span><FaClock /> 10-20 min</span>
+					<span><FaDollarSign /> R$ 5,99</span>
+					<span><FaStar /> 4.8</span>
 				</div>
 			</div>
 
-			<div className={ classnames( styles[ 'restaurant-ranking' ] ) }>
+			<div className={ classnames(styles[ 'restaurant-ranking' ]) }>
 				<div>
 					<span>Ranking do restaurante</span>
-					<div className={ classnames( styles[ 'avatars-group' ] ) }>
-						{ customerRanking?.map( ( customer ) => (
+					<div className={ classnames(styles[ 'avatars-group' ]) }>
+						{ customerRanking?.map(( customer ) => (
 							<RankingAvatar
 								key={ customer.id }
 								src={ customer.avatar }
@@ -97,18 +95,18 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 								second={ customer.position === 2 }
 								third={ customer.position === 3 }
 							/>
-						) ) }
+						)) }
 					</div>
 				</div>
 				<div>
 					<span>Meu ranking</span>
-					<div className={ classnames( styles[ 'avatars-group' ] ) }>
+					<div className={ classnames(styles[ 'avatars-group' ]) }>
 						{ myRanking && (
 							<RankingAvatar
 								src={ myRanking.avatar }
 								badgeComponent={ (
 									<>
-										<FaStar size={ 12 }/>2
+										<FaStar size={ 12 } />2
 									</>
 								) }
 							/>
@@ -117,9 +115,9 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 				</div>
 			</div>
 
-			<div className={ classnames( styles[ 'full-ranking-btn-wrapper' ] ) }>
+			<div className={ classnames(styles[ 'full-ranking-btn-wrapper' ]) }>
 				<Button
-					endIcon={ <FiChevronRight/> }
+					endIcon={ <FiChevronRight /> }
 					variant={ "contained" }
 					color={ "inherit" }
 				>
@@ -127,13 +125,13 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 				</Button>
 			</div>
 
-			<div className={ classnames( styles[ 'popular-foods' ] ) }>
+			<div className={ classnames(styles[ 'popular-foods' ]) }>
 				<h1>Popular</h1>
 
-				<div className={ classnames( styles[ 'horizontal-scroll' ] ) }>
+				<div className={ classnames(styles[ 'horizontal-scroll' ]) }>
 					<div>
-						{ [ 1, 2, 3 ].map( ( _, k ) => (
-							<div key={ k.toString() } className={ classnames( styles[ 'popular-food-card' ] ) }>
+						{ [ 1, 2, 3 ].map(( _, k ) => (
+							<div key={ k.toString() } className={ classnames(styles[ 'popular-food-card' ]) }>
 								<Image
 									src={ "/food-1.jpg" }
 									alt={ "Image" }
@@ -149,39 +147,39 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 								R$ 5,99
 							</span>
 							</div>
-						) ) }
+						)) }
 					</div>
 				</div>
 			</div>
 
-			<div className={ classnames( styles[ 'food-menu' ] ) }>
-				<div className={ classnames( styles[ 'food-menu-horizontal-scroll' ] ) }>
+			<div className={ classnames(styles[ 'food-menu' ]) }>
+				<div className={ classnames(styles[ 'food-menu-horizontal-scroll' ]) }>
 					<div>
-						{ foodMenu.map( ( category, k ) => (
+						{ foodMenu.map(( category, k ) => (
 							<Button
 								key={ k.toString() }
 								className={ classnames(
 									{ [ styles[ 'active' ] ]: k === 0 }
 								) }
-								href={`#${makeIdFromCategory(category)}`}
+								href={ `#${ makeIdFromCategory(category) }` }
 							>
 								{ category }
 							</Button>
-						) ) }
+						)) }
 					</div>
 				</div>
 
-				<section className={ classnames( styles[ 'menu-section' ] ) }>
-					{ foodMenu.map( ( category, kk ) => (
+				<section className={ classnames(styles[ 'menu-section' ]) }>
+					{ foodMenu.map(( category, kk ) => (
 						<div
 							key={ kk.toString() }
-							className={ classnames( styles[ 'menu-subsection' ] ) }
-							id={`${makeIdFromCategory(category)}`}
+							className={ classnames(styles[ 'menu-subsection' ]) }
+							id={ `${ makeIdFromCategory(category) }` }
 						>
 							<h2>{ category }</h2>
-							{ [ 1, 2, 3, 4 ].map( ( _, k ) => (
+							{ [ 1, 2, 3, 4 ].map(( _, k ) => (
 								<button type={ "button" } key={ k.toString() }>
-									<div className={ classnames( styles[ 'food-button-info' ] ) }>
+									<div className={ classnames(styles[ 'food-button-info' ]) }>
 										<div>
 											<Image
 												src={ "/food-1.jpg" }
@@ -199,77 +197,20 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 									</div>
 
 									<div>
-										<HandleCart />
+										<CartHandler />
 									</div>
 								</button>
-							) ) }
+							)) }
 						</div>
-					) ) }
+					)) }
 				</section>
 			</div>
 		</MainGrid>
 	);
 }
 
-type HandleCartProps = {
-	isOnCart?: boolean
-}
 
-const HandleCart = ( { isOnCart = false }: HandleCartProps ) => {
-	const id = useMemo( () =>
-			(Math.random() * 0x100000)
-				.toString( 16 )
-				.replace( /\./, '-' ),
-		[]
-	)
-
-	const [ onCart, setOnCart ] = useState(isOnCart);
-	const [ qtd, setQtd ] = useState( 1 );
-
-	const handleAddToCart = useCallback(() => setOnCart(true), [])
-	const handleRemoveFromCart = useCallback(() => setOnCart(false), [])
-
-	const handleChangeQtd = useCallback( ( newQtd: number ) => {
-		if (newQtd <= 0) {
-			handleRemoveFromCart()
-			return;
-		}
-
-		setQtd( newQtd )
-	}, [ handleRemoveFromCart ] )
-
-	const handleIncrement = useCallback(
-		() => handleChangeQtd( qtd + 1 ),
-		[ handleChangeQtd, qtd ]
-	);
-
-	const handleDecrement = useCallback(
-		() => handleChangeQtd( qtd - 1 ),
-		[ handleChangeQtd, qtd ]
-	);
-
-	if ( onCart ) {
-		return (
-			<div className={ classnames( styles[ 'is-on-cart' ] ) }>
-				<IconButton onClick={ handleDecrement }>
-					<MdRemove/>
-				</IconButton>
-				<label htmlFor={ `quantity-${ id }` }>{ qtd }</label>
-				<IconButton onClick={ handleIncrement }>
-					<MdAdd/>
-				</IconButton>
-			</div>
-		)
-	}
-
-	return (
-		<IconButton onClick={handleAddToCart}>
-			<GiShoppingBag size={ 24 }/>
-		</IconButton>
-	)
-}
-
-function makeIdFromCategory(category: string) {
+function makeIdFromCategory( category: string ) {
 	return category.toLowerCase().replace(/[.\s_]+/, '-');
 }
 
