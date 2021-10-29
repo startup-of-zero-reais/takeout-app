@@ -163,6 +163,7 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 								className={ classnames(
 									{ [ styles[ 'active' ] ]: k === 0 }
 								) }
+								href={`#${makeIdFromCategory(category)}`}
 							>
 								{ category }
 							</Button>
@@ -172,7 +173,11 @@ const RestaurantPage = ( { restaurant, customerRanking, myRanking, foodMenu }: R
 
 				<section className={ classnames( styles[ 'menu-section' ] ) }>
 					{ foodMenu.map( ( category, kk ) => (
-						<div key={ kk.toString() } className={ classnames( styles[ 'menu-subsection' ] ) }>
+						<div
+							key={ kk.toString() }
+							className={ classnames( styles[ 'menu-subsection' ] ) }
+							id={`${makeIdFromCategory(category)}`}
+						>
 							<h2>{ category }</h2>
 							{ [ 1, 2, 3, 4 ].map( ( _, k ) => (
 								<button type={ "button" } key={ k.toString() }>
@@ -262,6 +267,10 @@ const HandleCart = ( { isOnCart = false }: HandleCartProps ) => {
 			<GiShoppingBag size={ 24 }/>
 		</IconButton>
 	)
+}
+
+function makeIdFromCategory(category: string) {
+	return category.toLowerCase().replace(/[.\s_]+/, '-');
 }
 
 RestaurantPage.getInitialProps = async ( _: NextPageContext ) => {

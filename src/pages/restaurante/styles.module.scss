@@ -186,7 +186,7 @@
 			display: flex;
 			gap: var(--spacing-xs);
 
-			> button {
+			> button, > a {
 				white-space: nowrap;
 				text-transform: initial;
 				color: #{$DeepGray};
