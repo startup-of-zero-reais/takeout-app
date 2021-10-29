@@ -14,40 +14,40 @@ type RouteConfig = {
 
 const iconSize = 24;
 
-export const routes: Map<RouteNames, RouteConfig> = new Map<RouteNames, RouteConfig>( [
+export const routes: Map<RouteNames, RouteConfig> = new Map<RouteNames, RouteConfig>([
 	[ 'home', {
 		label: 'Inicio',
 		href: '/',
-		icon: <FiHome size={ iconSize }/>,
+		icon: <FiHome size={ iconSize } />,
 		level: 0,
 	} ],
 	[ 'cart', {
 		label: 'Carrinho',
 		href: '/carrinho',
-		icon: <FiShoppingCart size={ iconSize }/>,
+		icon: <FiShoppingCart size={ iconSize } />,
 		level: 0
 	} ],
 	[ 'prizes', {
 		label: 'Ranking',
 		href: '/ranking',
-		icon: <BsTrophy size={ iconSize }/>,
+		icon: <BsTrophy size={ iconSize } />,
 		level: 0
 	} ],
 	[ 'profile', {
 		label: 'Perfil',
 		href: '/perfil',
-		icon: <FiUser size={ iconSize }/>,
+		icon: <FiUser size={ iconSize } />,
 		level: 0
 	} ]
-] );
+]);
 
 export function getRoutes( routesnames: RouteNames[] ): RouteConfig[] {
-	return routesnames.flatMap( hasRoute )
+	return routesnames.flatMap(hasRoute)
 }
 
 function hasRoute( routename: RouteNames ): RouteConfig | [] {
-	if ( routes.has( routename ) && routes.get( routename )?.level === 0 ) {
-		return routes.get( routename )!
+	if ( routes.has(routename) && routes.get(routename)?.level === 0 ) {
+		return routes.get(routename)!
 	}
 
 	return []

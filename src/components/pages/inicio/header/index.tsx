@@ -8,7 +8,7 @@ import { Button } from "@material-ui/core";
 
 export const HomeHeader = () => {
 	return (
-		<div className={ classnames( styles[ 'header-menu' ] ) }>
+		<div className={ classnames(styles[ 'header-menu' ]) }>
 			<h1>
 				Entregando em &#8594;
 				<Link href={ "/endereco" } passHref>
@@ -19,9 +19,9 @@ export const HomeHeader = () => {
 			</h1>
 
 			<Button>
-				<div className={ classnames( styles[ 'basket' ] ) }>
-					<FaShoppingBasket size={ 24 }/>
-					<div className={ classnames( styles[ 'badge' ] ) }>
+				<div className={ classnames(styles[ 'basket' ]) }>
+					<FaShoppingBasket size={ 24 } />
+					<div className={ classnames(styles[ 'badge' ]) }>
 						R$ 5,00
 					</div>
 				</div>

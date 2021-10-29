@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainGrid, HomeHeader, SearchBar, FoodCard, FoodCategory } from "@src/components";
+import { FoodCard, FoodCategory, HomeHeader, MainGrid, SearchBar } from "@src/components";
 import { NextPageContext } from "next";
 
 type HomeProps = {
@@ -9,20 +9,20 @@ type HomeProps = {
 const Home = ( { restaurants }: HomeProps ) => {
 	return (
 		<MainGrid>
-			<HomeHeader/>
-			<SearchBar/>
+			<HomeHeader />
+			<SearchBar />
 
-			<FoodCategory/>
+			<FoodCategory />
 
 			<div style={ { padding: 16 } }>
-				{ restaurants?.map( ( card ) => (
+				{ restaurants?.map(( card ) => (
 					<FoodCard
-						image={card.image}
-						isOnBasket={card.id === 'abcd-1234-efgh-5679'}
+						image={ card.image }
+						isOnBasket={ card.id === 'abcd-1234-efgh-5679' }
 						key={ card.id }
-						slug={card.slug}
+						slug={ card.slug }
 					/>
-				) ) }
+				)) }
 			</div>
 		</MainGrid>
 	);
@@ -51,7 +51,7 @@ const restaurants = [
 	},
 ]
 
-Home.getInitialProps = async (_: NextPageContext) => {
+Home.getInitialProps = async ( _: NextPageContext ) => {
 	return {
 		restaurants
 	}

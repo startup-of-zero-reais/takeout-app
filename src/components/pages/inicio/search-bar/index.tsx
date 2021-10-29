@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, InputAdornment, IconButton } from "@material-ui/core";
+import { IconButton, InputAdornment, TextField } from "@material-ui/core";
 import { FiMic, FiSearch } from "react-icons/fi";
 import { HiOutlineAdjustments } from "react-icons/hi";
 import { classnames, RenderIf } from "@src/components";
@@ -27,8 +27,8 @@ export const SearchBar = () => {
 
 
 	return (
-		<div className={ classnames( styles[ 'search-wrapper' ] ) }>
-			<div className={ classnames( styles[ 'search-bar' ] ) }>
+		<div className={ classnames(styles[ 'search-wrapper' ]) }>
+			<div className={ classnames(styles[ 'search-bar' ]) }>
 				<TextField
 					placeholder={ "Busque por restaurante ou prato" }
 					variant={ "outlined" }
@@ -37,14 +37,14 @@ export const SearchBar = () => {
 						startAdornment: (
 							<InputAdornment position={ "start" }>
 								<IconButton>
-									<FiSearch size={ 18 }/>
+									<FiSearch size={ 18 } />
 								</IconButton>
 							</InputAdornment>
 						),
 						endAdornment: (
 							<InputAdornment position={ "end" }>
 								<IconButton>
-									<FiMic size={ 18 }/>
+									<FiMic size={ 18 } />
 								</IconButton>
 							</InputAdornment>
 						)
@@ -53,26 +53,26 @@ export const SearchBar = () => {
 
 				<div>
 					<IconButton onClick={ handleShowFiltersDisplay }>
-						<HiOutlineAdjustments/>
+						<HiOutlineAdjustments />
 					</IconButton>
 				</div>
 			</div>
 
-			{ RenderIf( hasDisplay, (
+			{ RenderIf(hasDisplay, (
 				<RecentSearches
 					handleDisplayOff={ handleDisplayOff }
 					focused={ focused }
 					setFocusOut={ handleFocusOut }
 				/>
-			) ) }
+			)) }
 
-			{ RenderIf( hasFiltersDisplay, (
+			{ RenderIf(hasFiltersDisplay, (
 				<FiltersConfig
 					opened={ opened }
 					close={ handleCloseFilters }
 					onClose={ handleCloseFiltersDisplay }
 				/>
-			) ) }
+			)) }
 		</div>
 	);
 }

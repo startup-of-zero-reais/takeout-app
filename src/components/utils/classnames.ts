@@ -7,7 +7,7 @@ type ClassnameToggle = [ condition: boolean, trueClass: string, falseClass: stri
 type Classname = string | ClassnameWithCondition | ClassnameToggle;
 
 export function classnames( ...classname: Classname[] ): string {
-	return classname.map( parseClassname ).join( ' ' )
+	return classname.map(parseClassname).join(' ')
 }
 
 function parseClassname( classname: Classname ): string {
@@ -16,11 +16,11 @@ function parseClassname( classname: Classname ): string {
 	}
 
 	if ( _.isArray(classname) ) {
-		return classnameToggle( classname )
+		return classnameToggle(classname)
 	}
 
-	if (_.isObject(classname)) {
-		return checkClassnameCondition( classname )
+	if ( _.isObject(classname) ) {
+		return checkClassnameCondition(classname)
 	}
 
 	return classname
@@ -33,7 +33,7 @@ function classnameToggle( classname: ClassnameToggle ): string {
 }
 
 function checkClassnameCondition( classname: ClassnameWithCondition ): string {
-	const [ className, condition ] = Object.entries( classname )?.[ 0 ]
+	const [ className, condition ] = Object.entries(classname)?.[ 0 ]
 
 	return condition ? className : '';
 }

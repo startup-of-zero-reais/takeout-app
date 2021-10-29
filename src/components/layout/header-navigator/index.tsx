@@ -15,12 +15,12 @@ export const HeaderNavigator = ( { title, icon: Icon, action }: HeaderNavigatorP
 	const { back } = useRouter();
 
 	return (
-		<nav className={ classnames( styles[ 'header_top' ] ) }>
-			<IconButton onClick={ back } >
+		<nav className={ classnames(styles[ 'header_top' ]) }>
+			<IconButton onClick={ back }>
 				<Icon
 					size={ 18 }
 					color="#7E8389"
-					className={ classnames( styles[ 'header_icon' ] ) }
+					className={ classnames(styles[ 'header_icon' ]) }
 				/>
 			</IconButton>
 

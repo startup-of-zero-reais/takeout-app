@@ -1,4 +1,4 @@
-import React, { MouseEvent, ReactNode, useCallback, useEffect,  useState } from 'react';
+import React, { MouseEvent, ReactNode, useCallback, useEffect, useState } from 'react';
 import Link from 'next/link'
 import { classnames } from "@src/components";
 import styles from "./style.module.scss";
@@ -15,23 +15,23 @@ export const BottomLink = ( { to, onClick: onPropsClick, icon, selected = false 
 	const router = useRouter();
 	const { pathname } = router;
 
-	const [currentPage, setCurrentPage] = useState(false);
+	const [ currentPage, setCurrentPage ] = useState(false);
 
-	const onClick = useCallback( async (e: MouseEvent) => {
+	const onClick = useCallback(async ( e: MouseEvent ) => {
 		e.preventDefault();
 		await router.push(to)
 
 		onPropsClick?.(e)
-	}, [ onPropsClick, router, to ] )
+	}, [ onPropsClick, router, to ])
 
 	useEffect(() => {
 		setCurrentPage(selected || pathname === to)
-	}, [pathname, to, selected])
+	}, [ pathname, to, selected ])
 
 	return (
 		<Link href={ to }>
 			<a
-				className={ classnames( { [ styles[ 'active' ] ]: currentPage } ) }
+				className={ classnames({ [ styles[ 'active' ] ]: currentPage }) }
 				onClick={ onClick }
 			>
 				{ icon }

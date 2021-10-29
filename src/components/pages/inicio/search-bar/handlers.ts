@@ -2,23 +2,23 @@
 import { useCallback, useState } from "react";
 
 export function searchHandlers() {
-	const [ hasDisplay, setHasDisplay ] = useState( false )
-	const [ focused, setFocused ] = useState( false );
+	const [ hasDisplay, setHasDisplay ] = useState(false)
+	const [ focused, setFocused ] = useState(false);
 
-	const handleDisplayOn = useCallback( () => {
-		setHasDisplay( true )
-		setTimeout( () => setFocused( true ) )
-	}, [] )
+	const handleDisplayOn = useCallback(() => {
+		setHasDisplay(true)
+		setTimeout(() => setFocused(true))
+	}, [])
 
-	const handleDisplayOff = useCallback( () => {
+	const handleDisplayOff = useCallback(() => {
 		if ( !focused ) {
-			setHasDisplay( false )
+			setHasDisplay(false)
 		}
-	}, [ focused ] )
+	}, [ focused ])
 
-	const handleFocusOut = useCallback( () => {
-		setFocused( false )
-	}, [] )
+	const handleFocusOut = useCallback(() => {
+		setFocused(false)
+	}, [])
 
 	return {
 		focused,
@@ -30,23 +30,23 @@ export function searchHandlers() {
 }
 
 export function filtersHandlers() {
-	const [ hasFiltersDisplay, setFiltersDisplay ] = useState( false );
-	const [ opened, setOpened ] = useState( false );
+	const [ hasFiltersDisplay, setFiltersDisplay ] = useState(false);
+	const [ opened, setOpened ] = useState(false);
 
-	const handleShowFiltersDisplay = useCallback( () => {
-		setFiltersDisplay( true )
-		setTimeout( () => setOpened( true ) )
-	}, [] )
+	const handleShowFiltersDisplay = useCallback(() => {
+		setFiltersDisplay(true)
+		setTimeout(() => setOpened(true))
+	}, [])
 
-	const handleCloseFilters = useCallback( () => {
-		setOpened( false )
-	}, [] )
+	const handleCloseFilters = useCallback(() => {
+		setOpened(false)
+	}, [])
 
-	const handleCloseFiltersDisplay = useCallback( () => {
+	const handleCloseFiltersDisplay = useCallback(() => {
 		if ( !opened ) {
-			setFiltersDisplay( false )
+			setFiltersDisplay(false)
 		}
-	}, [ opened ] )
+	}, [ opened ])
 
 	return {
 		opened,

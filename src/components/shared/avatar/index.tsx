@@ -63,12 +63,12 @@ export const Avatar = (
 				width={ size }
 				height={ size }
 				className={
-					classnames( imageClassName )
+					classnames(imageClassName)
 				}
 			/>
 
 			{ badge &&
-			RenderIf( badge.model === 'custom', (
+			RenderIf(badge.model === 'custom', (
 				<div className={ classnames(
 					badge.className!,
 					styles[ badge.anchorPoints!.horizontal ],
@@ -77,7 +77,7 @@ export const Avatar = (
 				) }>
 					{ badge.customComponent }
 				</div>
-			) ) }
+			)) }
 		</div>
 	);
 }

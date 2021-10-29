@@ -19,10 +19,10 @@ export default function MyApp( { Component, emotionCache = clientSideEmotionCach
 		<CacheProvider value={ emotionCache }>
 			<Head>
 				<title>Home</title>
-				<meta name="viewport" content="initial-scale=1, width=device-width"/>
+				<meta name="viewport" content="initial-scale=1, width=device-width" />
 			</Head>
 			<ThemeProvider theme={ theme }>
-				<CssBaseline/>
+				<CssBaseline />
 				<Component { ...pageProps } />
 				<BottomNavigator />
 			</ThemeProvider>

@@ -15,10 +15,10 @@ const ModalOverlay = ( { children }: { children?: ReactNode } ) => {
 	)
 }
 
-const NoSSRModal = dynamic( () => Promise.resolve(
+const NoSSRModal = dynamic(() => Promise.resolve(
 	( { open, children }: ModalProps ) => {
-		const container = document.getElementById( "__next" )
-			?? document.createElement( 'div' )
+		const container = document.getElementById("__next")
+			?? document.createElement('div')
 
 		return ReactDOM.createPortal(
 			open
@@ -27,6 +27,6 @@ const NoSSRModal = dynamic( () => Promise.resolve(
 			container
 		)
 	}
-), { ssr: false } )
+), { ssr: false })
 
 export const Modal = ( props: ModalProps ) => <NoSSRModal { ...props } />

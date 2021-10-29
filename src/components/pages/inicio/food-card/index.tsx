@@ -17,10 +17,10 @@ type FoodCardProps = {
 
 export const FoodCard = ( { slug, image, isOnBasket = false }: FoodCardProps ) => {
 	return (
-		<div className={ classnames( styles[ 'food-card' ] ) }>
-			<Link href={ `/restaurante/${ encodeURIComponent( slug ) }` } passHref>
+		<div className={ classnames(styles[ 'food-card' ]) }>
+			<Link href={ `/restaurante/${ encodeURIComponent(slug) }` } passHref>
 				<a>
-					<div className={ classnames( styles[ 'food-image-wrapper' ] ) }>
+					<div className={ classnames(styles[ 'food-image-wrapper' ]) }>
 						<Image
 							src={ image }
 							alt={ "food-1" }
@@ -34,36 +34,36 @@ export const FoodCard = ( { slug, image, isOnBasket = false }: FoodCardProps ) =
 						/>
 					</div>
 
-					<div className={ classnames( styles[ 'food-info' ] ) }>
-						<div className={ classnames( styles[ 'food-info-restaurant' ] ) }>
-							<h2>Katsuei { RenderIf( isOnBasket, (
-								<div className={ classnames( styles[ 'food-info-on-basket' ] ) }>
-									<FaShoppingBasket/>
+					<div className={ classnames(styles[ 'food-info' ]) }>
+						<div className={ classnames(styles[ 'food-info-restaurant' ]) }>
+							<h2>Katsuei { RenderIf(isOnBasket, (
+								<div className={ classnames(styles[ 'food-info-on-basket' ]) }>
+									<FaShoppingBasket />
 									<span>
-								<FaCheckCircle size={ 14 }/>
+								<FaCheckCircle size={ 14 } />
 							</span>
 								</div>
-							) ) }</h2>
+							)) }</h2>
 							<h3>
 								<span>Japanese</span>
 								<span>Sushi</span>
 							</h3>
 							<section>
 								<span>10-15 min</span>
-								<span><RiMotorbikeFill/> R$ 5,99</span>
-								<span><FiStar/> 4.8</span>
+								<span><RiMotorbikeFill /> R$ 5,99</span>
+								<span><FiStar /> 4.8</span>
 							</section>
 						</div>
 
-						{ RenderIf( '/food-2.jpg' === image, (
-							<div className={ classnames( styles[ 'food-info-ranking' ] ) }>
+						{ RenderIf('/food-2.jpg' === image, (
+							<div className={ classnames(styles[ 'food-info-ranking' ]) }>
 								<AvatarGroup max={ 3 }>
-									<AvatarWithBadge position={ 1 }/>
-									<AvatarWithBadge position={ 2 }/>
-									<AvatarWithBadge position={ 3 }/>
+									<AvatarWithBadge position={ 1 } />
+									<AvatarWithBadge position={ 2 } />
+									<AvatarWithBadge position={ 3 } />
 								</AvatarGroup>
 							</div>
-						) ) }
+						)) }
 					</div>
 				</a>
 			</Link>
@@ -91,7 +91,7 @@ const AvatarWithBadge = ( { position }: AvatarWithBadgeProps ) => {
 				{ [ styles.third ]: position === 3 },
 			) }
 		>
-			<Avatar src={ `/avatar-${ position }.jpg` } sx={ { width: 48, height: 48 } }/>
+			<Avatar src={ `/avatar-${ position }.jpg` } sx={ { width: 48, height: 48 } } />
 		</Badge>
 	)
 }

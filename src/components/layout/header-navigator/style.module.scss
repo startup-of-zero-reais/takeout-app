@@ -1,18 +1,18 @@
 .header_top {
-  @import "../../../styles/globals";
+	@import "../../../styles/globals";
 
-  display: grid;
-  grid-template-columns: 48px 1fr 48px;
-  height: 40px;
-  border: 1px solid #{$DeepGray}20;
-  justify-content: flex-start;
-  align-items: center;
-  place-items: center;
+	display: grid;
+	grid-template-columns: 48px 1fr 48px;
+	height: 40px;
+	border: 1px solid #{$DeepGray}20;
+	justify-content: flex-start;
+	align-items: center;
+	place-items: center;
 
-  & > h1 {
-    font-size: 20px;
-    color: var(--DeepGray);
-    font-weight: normal;
-  }
+	& > h1 {
+		font-size: 20px;
+		color: var(--DeepGray);
+		font-weight: normal;
+	}
 }
 

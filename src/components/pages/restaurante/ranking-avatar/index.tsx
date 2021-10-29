@@ -31,7 +31,7 @@ export const RankingAvatar = (
 	return (
 		<Avatar
 			src={ src }
-			alt={ `Avatar ${altStr}` }
+			alt={ `Avatar ${ altStr }` }
 			size={ 80 }
 			badge={ {
 				model: 'custom',

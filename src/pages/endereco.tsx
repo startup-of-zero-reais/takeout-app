@@ -18,7 +18,7 @@ const Endereco = ( _: EnderecoProps ) => {
 				action={ console.log }
 			/>
 
-			<div className={ classnames( styles[ 'search-bar' ] ) }>
+			<div className={ classnames(styles[ 'search-bar' ]) }>
 				<TextField
 					placeholder={ "Adicionar endereço" }
 					variant={ "outlined" }
@@ -26,14 +26,14 @@ const Endereco = ( _: EnderecoProps ) => {
 						startAdornment: (
 							<InputAdornment position={ "start" }>
 								<IconButton>
-									<FiSearch size={ 18 }/>
+									<FiSearch size={ 18 } />
 								</IconButton>
 							</InputAdornment>
 						),
 						endAdornment: (
 							<InputAdornment position={ "end" }>
 								<IconButton>
-									<FiMic size={ 18 }/>
+									<FiMic size={ 18 } />
 								</IconButton>
 							</InputAdornment>
 						)
@@ -41,13 +41,13 @@ const Endereco = ( _: EnderecoProps ) => {
 				/>
 			</div>
 
-			<div className={ classnames( styles[ 'locations' ] ) }>
-				{ locations.map( ( location ) => (
-					<button key={ location.id } className={ classnames( styles[ 'single-location' ] ) }>
+			<div className={ classnames(styles[ 'locations' ]) }>
+				{ locations.map(( location ) => (
+					<button key={ location.id } className={ classnames(styles[ 'single-location' ]) }>
 						<div>
 							{ location.isCurrentLocation
-								? <TiLocationArrow size={ 32 }/>
-								: <ImLocation size={ 28 }/>
+								? <TiLocationArrow size={ 32 } />
+								: <ImLocation size={ 28 } />
 							}
 						</div>
 
@@ -63,7 +63,7 @@ const Endereco = ( _: EnderecoProps ) => {
 							</span>
 						</div>
 					</button>
-				) ) }
+				)) }
 			</div>
 		</MainGrid>
 	);

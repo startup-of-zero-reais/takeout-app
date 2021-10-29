@@ -22,27 +22,27 @@ export const RecentSearches = ( { focused, handleDisplayOff, setFocusOut }: Rece
 			<h2>
 				Buscas recentes
 				<IconButton onClick={ setFocusOut }>
-					<AiOutlineClose/>
+					<AiOutlineClose />
 				</IconButton>
 			</h2>
 
-			<ul className={ classnames( styles[ 'recent-searches' ] ) }>
+			<ul className={ classnames(styles[ 'recent-searches' ]) }>
 				<li>
 					<Button href={ "#" }>
 						Sushi
-						<AiOutlineClockCircle/>
+						<AiOutlineClockCircle />
 					</Button>
 				</li>
 				<li>
 					<Button href={ "#" }>
 						Pizza
-						<AiOutlineClockCircle/>
+						<AiOutlineClockCircle />
 					</Button>
 				</li>
 				<li>
 					<Button href={ "#" }>
 						Lanche
-						<AiOutlineClockCircle/>
+						<AiOutlineClockCircle />
 					</Button>
 				</li>
 			</ul>

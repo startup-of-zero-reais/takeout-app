@@ -14,7 +14,7 @@ const shimmer = ( w: number, h: number ) => `
 
 const toBase64 = ( str: string ) =>
 	typeof window === 'undefined'
-		? Buffer.from( str ).toString( 'base64' )
-		: window.btoa( str )
+		? Buffer.from(str).toString('base64')
+		: window.btoa(str)
 
-export const blurDataURL = () => `data:image/svg+xml;base64,${ toBase64( shimmer( 350, 150 ) ) }`
+export const blurDataURL = () => `data:image/svg+xml;base64,${ toBase64(shimmer(350, 150)) }`

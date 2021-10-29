@@ -8,7 +8,7 @@ type MainGridProps = {
 
 export const MainGrid = ( { children }: MainGridProps ) => {
 	return (
-		<div className={ classnames( styles[ 'main-grid' ] ) }>
+		<div className={ classnames(styles[ 'main-grid' ]) }>
 			{ children }
 		</div>
 	);
