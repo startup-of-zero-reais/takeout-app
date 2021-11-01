@@ -1,9 +1,8 @@
-import React, { useCallback, useRef } from "react";
-import { IconButton } from "@mui/material";
-import { AiOutlineClose } from "react-icons/ai";
+import React, { useCallback, useEffect, useState } from "react";
 import { classnames } from "@src/components";
-import { extractElements } from "./utils";
+import { HandleCloseButton } from './handle-close-button'
 import { WithChildren } from "./modal-typings";
+import { extractElements } from "./utils";
 import { Header } from './header';
 import { Content } from "./content";
 import { Footer } from "./footer";
@@ -34,7 +33,7 @@ export const Modal = (
 		footerClassname = '',
 	}: ModalProps
 ) => {
-	const containerRef = useRef<HTMLDivElement | null>(null);
+	const [ active, setActive ] = useState(false);
 
 	const getElement = extractElements(children);
 
@@ -44,41 +43,46 @@ export const Modal = (
 
 	const wrapperStyles = classnames(
 		styles.modalWrapper,
-		{ [styles.wrapperActive]: open }
+		{ [styles.wrapperActive]: active }
 	)
 
 	const overlayStyles = classnames(
 		styles.modalOverlay,
-		{ [styles.overlayActive]: open }
+		{ [styles.overlayActive]: active }
 	);
 
 	const containerStyles = classnames(
 		styles.modalContainer,
-		{ [containerClassname]: !!containerClassname },
-		{ [styles.containerActive]: open }
+		containerClassname,
+		{ [styles.containerActive]: active }
 	);
 
 	const headerStyles = classnames(
-		{ [headerClassname]: !!headerClassname },
+		headerClassname,
 		[ withHandle, styles.modalHeaderContainerWithHandle, styles.modalHeaderContainer ]
 	);
 
 	const contentStyles = classnames(
-		{ [contentClassname]: !!contentClassname },
+		contentClassname,
 		styles.modalContentContainer
 	)
 
 	const footerStyles = classnames(
-		{ [footerClassname]: !!footerClassname },
+		footerClassname,
 		styles.modalFooterContainer
 	)
 
 	const closeModal = useCallback(() => {
-		onClose()
+		setActive(false)
+		setTimeout(() => onClose(), 200)
 	}, [])
 
 	const stopPropagation = useCallback(( e: React.MouseEvent ) => {
 		e.stopPropagation()
+	}, [])
+
+	useEffect(() => {
+		setTimeout(() => setActive(open));
 	}, [])
 
 	return (
@@ -88,7 +92,6 @@ export const Modal = (
 				onClick={ closeModal }
 			>
 				<div
-					ref={ containerRef }
 					className={ containerStyles }
 					style={ { height } }
 					onClick={ stopPropagation }
