@@ -1,0 +1,74 @@
+@import './src/styles/colors';
+
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  height: 100vh;
+}
+
+.modalOverlay {
+  position: absolute;
+  background: #000000BB;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modalContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+
+  border-top-left-radius: var(--radii-sm);
+  border-top-right-radius: var(--radii-sm);
+}
+
+.modalHeaderContainer {
+  display: grid;
+  grid-template-columns: auto 40px;
+  align-items: center;
+}
+
+.modalHeaderContainerWithHandle {
+  display: grid;
+  grid-template-rows: 30px auto;
+  grid-template-areas: 'handle' 'header';
+  align-items: center;
+  flex-direction: column-reverse;
+
+  > button {
+    width: 100%;
+    height: 100%;
+    grid-area: handle;
+    border: 0;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #{$SilverSycee}70;
+      border-radius: var(--radii-md);
+    }
+  }
+}
+
+.modalContentContainer {
+  flex: 1;
+}
+
+.modalFooterContainer {
+}
