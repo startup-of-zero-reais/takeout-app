@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, IconButton } from "@mui/material";
+import React, { useCallback, useRef } from "react";
+import { IconButton } from "@mui/material";
 import { AiOutlineClose } from "react-icons/ai";
 import { classnames } from "@src/components";
 import { extractElements } from "./utils";
@@ -11,6 +11,7 @@ import styles from './styles.module.scss';
 
 interface ModalProps extends WithChildren {
 	open: boolean;
+	onClose: () => void;
 	height?: number;
 	withHandle?: boolean;
 
@@ -22,6 +23,8 @@ interface ModalProps extends WithChildren {
 
 export const Modal = (
 	{
+		open = false,
+		onClose,
 		children,
 		height,
 		withHandle = false,
@@ -31,15 +34,28 @@ export const Modal = (
 		footerClassname = '',
 	}: ModalProps
 ) => {
+	const containerRef = useRef<HTMLDivElement | null>(null);
+
 	const getElement = extractElements(children);
 
 	const headerChild = getElement('Header');
 	const contentChild = getElement('Content') ?? <h1>Use Modal.Content</h1>;
 	const footerChild = getElement('Footer');
 
+	const wrapperStyles = classnames(
+		styles.modalWrapper,
+		{ [styles.wrapperActive]: open }
+	)
+
+	const overlayStyles = classnames(
+		styles.modalOverlay,
+		{ [styles.overlayActive]: open }
+	);
+
 	const containerStyles = classnames(
 		styles.modalContainer,
-		{ [containerClassname]: !!containerClassname }
+		{ [containerClassname]: !!containerClassname },
+		{ [styles.containerActive]: open }
 	);
 
 	const headerStyles = classnames(
@@ -57,21 +73,37 @@ export const Modal = (
 		styles.modalFooterContainer
 	)
 
+	const closeModal = useCallback(() => {
+		onClose()
+	}, [])
+
+	const stopPropagation = useCallback(( e: React.MouseEvent ) => {
+		e.stopPropagation()
+	}, [])
+
 	return (
-		<div className={ classnames(styles.modalWrapper) }>
-			<div className={ classnames(styles.modalOverlay) }>
+		<div className={ wrapperStyles }>
+			<div
+				className={ overlayStyles }
+				onClick={ closeModal }
+			>
 				<div
+					ref={ containerRef }
 					className={ containerStyles }
 					style={ { height } }
+					onClick={ stopPropagation }
 				>
 					<div className={ headerStyles }>
 						<header>{ headerChild }</header>
 						{ withHandle
 							? (
-								<button type={ "button" }/>
+								<button
+									type={ "button" }
+									onClick={ closeModal }
+								/>
 							)
 							: (
-								<IconButton>
+								<IconButton onClick={ closeModal }>
 									<AiOutlineClose/>
 								</IconButton>
 							) }

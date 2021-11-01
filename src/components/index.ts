@@ -16,4 +16,3 @@ export * from './utils/classnames'
 export * from './utils/create-emotion-cache'
 export * from './utils/no-ssr'
 export * from './utils/render-if'
-export { Footer } from "@src/components/shared/modal/footer";

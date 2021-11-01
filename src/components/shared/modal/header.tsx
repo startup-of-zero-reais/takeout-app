@@ -1,6 +1,6 @@
 import React from "react";
-import { WithChildren } from "@src/components/shared/modal/modal-typings";
 import { classnames } from "@src/components";
+import { WithChildren } from "./modal-typings";
 
 interface HeaderProps extends WithChildren {
 	className?: string;
@@ -8,9 +8,7 @@ interface HeaderProps extends WithChildren {
 
 export const Header = ( { children, className = '' }: HeaderProps ) => {
 	return (
-		<div className={ classnames(
-			{ [className]: !!className }
-		) }>
+		<div className={ classnames(className) }>
 			{ children }
 		</div>
 	)

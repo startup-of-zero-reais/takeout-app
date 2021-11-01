@@ -7,6 +7,11 @@
   right: 0;
   z-index: 99;
   height: 100vh;
+  pointer-events: none;
+
+  &.wrapperActive {
+    pointer-events: initial;
+  }
 }
 
 .modalOverlay {
@@ -16,6 +21,13 @@
   bottom: 0;
   left: 0;
   right: 0;
+
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+
+  &.overlayActive {
+    opacity: 1;
+  }
 }
 
 .modalContainer {
@@ -26,9 +38,18 @@
   background: white;
   display: flex;
   flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 200ms ease-in;
+
+  pointer-events: none;
 
   border-top-left-radius: var(--radii-sm);
   border-top-right-radius: var(--radii-sm);
+
+  &.containerActive {
+    transform: translateY(0);
+    pointer-events: initial;
+  }
 }
 
 .modalHeaderContainer {
@@ -56,8 +77,8 @@
     &::after {
       content: "";
       position: absolute;
-      width: 120px;
-      height: 8px;
+      width: 60px;
+      height: 4px;
       left: 50%;
       transform: translateX(-50%);
       background: #{$SilverSycee}70;
