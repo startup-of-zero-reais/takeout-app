@@ -7,12 +7,10 @@ export function useModal(): UseModal {
 
 	const onOpen = useCallback(() => {
 		setOpen(true)
-		console.log("OPEN")
 	}, [])
-	
+
 	const onClose = useCallback(() => {
 		setOpen(false)
-		console.log("Close")
 	}, [])
 
 	return [ open, onOpen, onClose ];
