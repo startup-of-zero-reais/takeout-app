@@ -95,18 +95,7 @@ export const Modal = (
 				>
 					<div className={ headerStyles }>
 						<header>{ headerChild }</header>
-						{ withHandle
-							? (
-								<button
-									type={ "button" }
-									onClick={ closeModal }
-								/>
-							)
-							: (
-								<IconButton onClick={ closeModal }>
-									<AiOutlineClose/>
-								</IconButton>
-							) }
+						<HandleCloseButton closeModal={ closeModal } withHandle={ withHandle }/>
 					</div>
 					<div className={ contentStyles }>{ contentChild }</div>
 					<div className={ footerStyles }>{ footerChild }</div>
