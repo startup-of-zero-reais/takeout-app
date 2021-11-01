@@ -5,10 +5,14 @@ import { HiPlus } from "react-icons/hi";
 import { BsBox } from "react-icons/bs";
 import { Button } from "@mui/material";
 import styles from "./styles.module.scss";
+import { useModal } from "@src/components/shared/modal/use-modal";
 
 const CouponModal = noSsrModal(Modal);
 
 const Cart = () => {
+
+	const [ open, onOpen, onClose ] = useModal();
+
 	return (
 		<MainGrid>
 			<HeaderNavigator
@@ -78,14 +82,23 @@ const Cart = () => {
 					variant="contained"
 					color="primary"
 					className={ classnames(styles['button_checkout']) }
+					onClick={ onOpen }
 				>
 					Finalizar pedido
 				</Button>
 			</main>
 
-			<CouponModal open height={ 300 } withHandle>
+			<CouponModal
+				open={ open }
+				onClose={ onClose }
+			>
 				<Modal.Header>Header</Modal.Header>
 				<Modal.Content>
+					<h1>children aqui</h1>
+					<h1>children aqui</h1>
+					<h1>children aqui</h1>
+					<h1>children aqui</h1>
+					<h1>children aqui</h1>
 					<h1>children aqui</h1>
 				</Modal.Content>
 				<Modal.Footer>Footer</Modal.Footer>
