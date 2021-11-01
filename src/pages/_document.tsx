@@ -14,8 +14,9 @@ class MyDocument extends Document {
 					/>
 				</Head>
 				<body>
-				<Main />
-				<NextScript />
+				<Main/>
+				<div id="modals-wrapper"/>
+				<NextScript/>
 				</body>
 			</Html>
 		)
@@ -30,9 +31,11 @@ MyDocument.getInitialProps = async ( ctx ) => {
 
 	ctx.renderPage = () =>
 		originalRenderPage({
-			// eslint-disable-next-line react/display-name
-			enhanceApp: ( App: any ) => ( props ) =>
-				<App emotionCache={ cache } { ...props } />,
+			enhanceApp( App: any ) {
+				return function enhancedApp( props ) {
+					return <App emotionCache={ cache } { ...props } />
+				}
+			},
 		})
 
 	const initialProps = await Document.getInitialProps(ctx)

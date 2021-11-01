@@ -4,54 +4,62 @@
 @import '_variables.scss';
 
 @function roundBorder($size) {
-	@return math.ceil(math.div($size, math.div(4, math.$pi)));
+  @return math.ceil(math.div($size, math.div(4, math.$pi)));
 }
 
 html,
 body {
-	padding: 0;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-	Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-	scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, {
-	font-family: 'SF Pro Display', sans-serif;
-	color: #{$BlackTortoise};
+  font-family: 'SF Pro Display', sans-serif;
+  color: #{$BlackTortoise};
 }
 
 :root {
-	--redVermilionBird: #E92F48;
-	--BlackTortoise: #424242;
-	--DeepGray: #7E8389;
-	--ToGoContainer: #F2F2F2;
-	--YellowDragon: #FFC107;
-	--SilverSycee: #A0A8B1;
-	--BronzeRitual: #D97953;
+  --redVermilionBird: #E92F48;
+  --BlackTortoise: #424242;
+  --DeepGray: #7E8389;
+  --ToGoContainer: #F2F2F2;
+  --YellowDragon: #FFC107;
+  --SilverSycee: #A0A8B1;
+  --BronzeRitual: #D97953;
 
-	$proportion: 8;
-	@for $i from 0 through 7 {
-		$range: #{nth($sizes, $i+1)};
-		$size: $proportion * ($i + 1);
-		--padding-#{$range}: #{$size}px;
-		--spacing-#{$range}: #{$size}px;
-		--radii-#{$range}: #{roundBorder($size)}px;
-	}
-	--radii-full: 50%;
+  $proportion: 8;
+  @for $i from 0 through 7 {
+    $range: #{nth($sizes, $i+1)};
+    $size: $proportion * ($i + 1);
+    --padding-#{$range}: #{$size}px;
+    --spacing-#{$range}: #{$size}px;
+    --radii-#{$range}: #{roundBorder($size)}px;
+  }
+  --radii-full: 50%;
 
-	@each $breakpoint, $width in $breakpoints {
-		--media-#{$breakpoint}: #{$width}px;
-	}
+  @each $breakpoint, $width in $breakpoints {
+    --media-#{$breakpoint}: #{$width}px;
+  }
+}
+
+#modals-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
 }
