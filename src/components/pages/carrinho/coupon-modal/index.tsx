@@ -1,5 +1,7 @@
 import React from "react";
-import { Modal, noSsrModal } from "@src/components";
+import { classnames, Modal, noSsrModal } from "@src/components";
+import { Button } from "@mui/material";
+import styles from './styles.module.scss';
 
 export type CouponModalProps = {
 	open: boolean;
@@ -13,17 +15,17 @@ export const CouponModal = ( { open, onClose }: CouponModalProps ) => {
 		<CouponNoSsrModal
 			open={ open }
 			onClose={ onClose }
+			containerClassname={ classnames(styles.containerAdditional) }
 		>
-			<Modal.Header>Header</Modal.Header>
+			<Modal.Header>Aqui temos o cabeçalho do Modal</Modal.Header>
 			<Modal.Content>
-				<h1>children aqui</h1>
-				<h1>children aqui</h1>
-				<h1>children aqui</h1>
-				<h1>children aqui</h1>
-				<h1>children aqui</h1>
-				<h1>children aqui</h1>
+				<span>Aqui temos o corpo do modal</span>
 			</Modal.Content>
-			<Modal.Footer>Footer</Modal.Footer>
+			<Modal.Footer>
+				<Button variant={ "contained" } fullWidth>
+					Aqui temos um botão
+				</Button>
+			</Modal.Footer>
 		</CouponNoSsrModal>
 	)
 }
