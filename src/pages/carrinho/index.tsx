@@ -1,16 +1,18 @@
 import React from 'react';
-import { classnames, HeaderNavigator, MainGrid, Modal, noSsrModal } from "@src/components";
+import {
+	classnames,
+	CouponModal,
+	HeaderNavigator,
+	MainGrid,
+	useModal
+} from "@src/components";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { HiPlus } from "react-icons/hi";
 import { BsBox } from "react-icons/bs";
 import { Button } from "@mui/material";
 import styles from "./styles.module.scss";
-import { useModal } from "@src/components/shared/modal/use-modal";
-
-const CouponModal = noSsrModal(Modal);
 
 const Cart = () => {
-
 	const [ open, onOpen, onClose ] = useModal();
 
 	return (
@@ -88,21 +90,7 @@ const Cart = () => {
 				</Button>
 			</main>
 
-			<CouponModal
-				open={ open }
-				onClose={ onClose }
-			>
-				<Modal.Header>Header</Modal.Header>
-				<Modal.Content>
-					<h1>children aqui</h1>
-					<h1>children aqui</h1>
-					<h1>children aqui</h1>
-					<h1>children aqui</h1>
-					<h1>children aqui</h1>
-					<h1>children aqui</h1>
-				</Modal.Content>
-				<Modal.Footer>Footer</Modal.Footer>
-			</CouponModal>
+			<CouponModal open={ open } onClose={ onClose }/>
 		</MainGrid>
 	);
 }
