@@ -57,6 +57,7 @@ const Cart = () => {
 					<Button
 						startIcon={ <BsBox size={ 20 } color={ '#7E8389' }/> }
 						className={ classnames(styles['credit']) }
+						onClick={ onOpen }
 					>
 						<b>Aplicar cupom de desconto</b>
 						<span>R$ 5,00</span>
@@ -84,7 +85,6 @@ const Cart = () => {
 					variant="contained"
 					color="primary"
 					className={ classnames(styles['button_checkout']) }
-					onClick={ onOpen }
 				>
 					Finalizar pedido
 				</Button>
