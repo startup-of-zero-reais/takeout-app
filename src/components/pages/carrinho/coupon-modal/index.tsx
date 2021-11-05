@@ -16,14 +16,25 @@ export const CouponModal = ( { open, onClose }: CouponModalProps ) => {
 			open={ open }
 			onClose={ onClose }
 			containerClassname={ classnames(styles.containerAdditional) }
+			height={ 500 }
 		>
-			<Modal.Header>Aqui temos o cabeçalho do Modal</Modal.Header>
 			<Modal.Content>
-				<span>Aqui temos o corpo do modal</span>
+				<div className={ classnames(styles.couponCard) }>
+					<h2>Créditos de cupom</h2>
+
+					<div>
+						<h2>R$ 5,75</h2>
+						<span>Creditos</span>
+					</div>
+				</div>
+
+				<p className={ classnames(styles.earnTip) }>
+					Você pode ganhar mais crédito ou receber mais cupons fazendo pedidos de restaurantes certificados
+				</p>
 			</Modal.Content>
 			<Modal.Footer>
-				<Button variant={ "contained" } fullWidth>
-					Aqui temos um botão
+				<Button variant={ "contained" } size={ "large" } fullWidth>
+					Aplicar cupom
 				</Button>
 			</Modal.Footer>
 		</CouponNoSsrModal>
