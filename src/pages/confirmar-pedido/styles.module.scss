@@ -1,0 +1,89 @@
+@import "./src/styles/index";
+
+.pageHeader {
+		display: block;
+		padding: var(--padding-sm) var(--padding-md);
+}
+
+.reviewButtonsWrapper {
+		@include flex-column();
+
+		gap: var(--spacing-sm);
+		padding: 0 var(--padding-md);
+}
+
+.total {
+		@include flex-row;
+		padding: var(--padding-sm) var(--padding-md);
+		flex: 1;
+
+		> strong {
+				@include flex-row;
+				flex: 1;
+				justify-content: space-between;
+
+				span {
+						font-size: pxToRem(18px);
+						font-weight: 500;
+				}
+		}
+}
+
+.buttonCheckout {
+		padding: 0 var(--padding-md);
+
+		> button, > a {
+				padding: var(--padding-sm) 0;
+		}
+}
+
+
+/** REVIEW BUTTON */
+
+.reviewButton {
+		@include flex-column();
+
+		.label {
+				@include flex-row();
+				align-items: center;
+				justify-content: space-between;
+
+				> label {
+						font-size: pxToRem(20px);
+						font-weight: 500;
+				}
+
+				> div {
+						> button, > a {
+								@include flex-row();
+								align-items: center;
+								gap: var(--spacing-xs);
+								background-color: transparent;
+								color: var(--redVermilionBird);
+								border: none;
+								font-weight: 500;
+								padding: var(--padding-xs);
+								cursor: pointer;
+								text-transform: initial;
+								font-size: pxToRem(14px);
+						}
+				}
+		}
+
+		.linkOrButtonWrapper {
+				margin-top: var(--spacing-xs);
+				@include flex-row();
+
+				> button, > a {
+						@include flex-row();
+						align-items: center;
+						justify-content: space-between;
+
+						border: none;
+						border-radius: var(--radii-sm);
+						padding: var(--padding-sm);
+						background-color: var(--ToGoContainer);
+						width: 100%;
+				}
+		}
+}
