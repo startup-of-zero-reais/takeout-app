@@ -1,36 +1,38 @@
 @import './src/styles/colors';
 
 .containerAdditional {
-  padding: var(--padding-sm);
-  gap: var(--spacing-sm);
+		padding: var(--padding-sm);
+		gap: var(--spacing-sm);
 }
 
 .couponCard {
-  background: #{$redVermilionBird};
-  color: white;
-  padding: var(--padding-sm);
-  border-radius: var(--radii-sm);
-  box-shadow: -3px 6px 10px #{$redVermilionBird}70,
-  3px 6px 10px #{$redVermilionBird}70;
+		background: #{$redVermilionBird};
+		color: white;
+		padding: var(--padding-sm);
+		border-radius: var(--radii-sm);
+		box-shadow: -3px 6px 10px #{$redVermilionBird}70,
+		3px 6px 10px #{$redVermilionBird}70;
+		max-width: 24rem;
+		margin: 0 auto;
 
-  h1, h2 {
-    color: white;
-  }
+		h1, h2 {
+				color: white;
+		}
 
-  > h1, > h2 {
-    font-family: "Bluu Suuperstar", serif;
-    margin-bottom: var(--spacing-lg);
-  }
+		> h1, > h2 {
+				font-family: "Bluu Suuperstar", serif;
+				margin-bottom: var(--spacing-lg);
+		}
 
-  > div {
-    width: 100%;
-    text-align: right;
-  }
+		> div {
+				width: 100%;
+				text-align: right;
+		}
 }
 
 .earnTip {
-  margin-top: var(--spacing-md);
-  padding: var(--padding-xs);
-  line-height: 18px;
-  font-size: 14px;
+		margin-top: var(--spacing-md);
+		padding: var(--padding-xs);
+		line-height: 18px;
+		font-size: 14px;
 }
