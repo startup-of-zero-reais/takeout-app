@@ -1,6 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
 import { Button } from "@mui/material";
-import { IoArrowBackSharp } from "react-icons/io5";
 import { FiXCircle } from "react-icons/fi";
 import { HiPlus } from "react-icons/hi";
 import { BsBox } from "react-icons/bs";
@@ -18,18 +18,19 @@ const Cart = () => {
 
 		return (
 				<MainGrid>
-						<HeaderNavigator
-								title="Carrinho"
-								icon={ IoArrowBackSharp }
-								action={ console.log }
-						/>
+						<HeaderNavigator title="Carrinho"/>
 
 						<main className={ classnames(styles.containerCart) }>
 								<div className={ classnames(styles.headerContentCart) }>
 										<h1>Seu pedido</h1>
-										<Button variant={ 'text' } endIcon={ <HiPlus size={ 14 }/> }>
-												<span>Adicionar item</span>
-										</Button>
+										<Link passHref href={ "/" }>
+												<Button
+														variant={ 'text' }
+														endIcon={ <HiPlus size={ 14 }/> }
+												>
+														<span>Adicionar item</span>
+												</Button>
+										</Link>
 								</div>
 
 								{ [ 1, 2, 3 ].map(( _, k ) => (
@@ -96,13 +97,15 @@ const Cart = () => {
 										</div>
 								</div>
 
-								<Button
-										variant="contained"
-										color="primary"
-										className={ classnames(styles.buttonCheckout) }
-								>
-										Finalizar pedido
-								</Button>
+								<Link passHref href={ "/confirmar-pedido" }>
+										<Button
+												variant="contained"
+												color="primary"
+												className={ classnames(styles.buttonCheckout) }
+										>
+												Finalizar pedido
+										</Button>
+								</Link>
 						</main>
 
 						<CouponModal open={ open } onClose={ onClose }/>
