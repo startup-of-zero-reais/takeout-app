@@ -1,4 +1,9 @@
 import React from 'react';
+import { Button } from "@mui/material";
+import { IoArrowBackSharp } from "react-icons/io5";
+import { FiXCircle } from "react-icons/fi";
+import { HiPlus } from "react-icons/hi";
+import { BsBox } from "react-icons/bs";
 import {
 		classnames,
 		CouponModal,
@@ -6,11 +11,6 @@ import {
 		MainGrid, RenderIf,
 		useModal
 } from "@src/components";
-import { IoArrowBackSharp } from "react-icons/io5";
-import { FiXCircle } from "react-icons/fi";
-import { HiPlus } from "react-icons/hi";
-import { BsBox } from "react-icons/bs";
-import { Button } from "@mui/material";
 import styles from "./styles.module.scss";
 
 const Cart = () => {
