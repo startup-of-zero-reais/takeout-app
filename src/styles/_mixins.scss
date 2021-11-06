@@ -1,0 +1,9 @@
+@use "sass:math";
+
+@function pxToRem($px, $remInPx: 16px) {
+		@return #{math.div($px, $remInPx)}rem;
+}
+
+@function roundBorder($size) {
+		@return math.ceil(math.div($size, math.div(4, math.$pi)));
+}
