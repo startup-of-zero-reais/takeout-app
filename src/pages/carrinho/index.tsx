@@ -103,7 +103,7 @@ const Cart = () => {
 												color="primary"
 												className={ classnames(styles.buttonCheckout) }
 										>
-												Finalizar pedido
+												Continuar
 										</Button>
 								</Link>
 						</main>
