@@ -46,7 +46,7 @@ const ConfirmOrder = () => {
 						</div>
 
 						<div className={ classnames(styles.buttonCheckout) }>
-								<Link passHref href={ "/pagar" }>
+								<Link passHref href={ "/finalizado" }>
 										<Button
 												variant="contained"
 												color="primary"
