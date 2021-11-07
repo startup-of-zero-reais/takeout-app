@@ -4,9 +4,9 @@ import { Avatar, classnames, MainGrid } from "@src/components";
 import styles from './styles.module.scss';
 import { Button } from "@mui/material";
 
-type RankingProps = {}
+type ProfileProps = {}
 
-const Index = ( _p: RankingProps ) => {
+const Profile = ( _p: ProfileProps ) => {
 		return (
 				<MainGrid className={ classnames(styles.mainGrid) }>
 						<div className={ classnames(styles.info) }>
@@ -53,4 +53,4 @@ const AvatarBadge = () => {
 		)
 }
 
-export default Index
+export default Profile;
