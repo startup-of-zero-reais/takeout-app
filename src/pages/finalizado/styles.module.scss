@@ -1,0 +1,78 @@
+@import './src/styles/index';
+
+.finishedHeader {
+		padding: var(--padding-md);
+
+		> h3 {
+				font-size: pxToRem(22px);
+		}
+
+		> span {
+				color: var(--DeepGray);
+				font-size: pxToRem(14px);
+				margin-bottom: var(--spacing-xs);
+		}
+}
+
+
+.deliveryMan {
+		@include flex-row;
+		padding: var(--padding-md);
+		gap: var(--spacing-xs);
+		align-items: center;
+
+		.deliveryManAvatar {
+		}
+
+		.deliveryManInfo {
+				@include flex-column;
+				flex: 1;
+
+				> small {
+						color: var(--DeepGray);
+				}
+		}
+
+		.deliveryManContact {
+				> button, > a {
+						@include mui-btn-reset;
+						background-color: var(--ToGoContainer);
+						color: var(--DeepGray);
+						font-weight: 400;
+						padding: 0 var(--padding-xs);
+						font-size: pxToRem(14px);
+				}
+		}
+
+}
+
+.orderInfos {
+		padding: 0 var(--padding-md);
+
+		.info {
+				margin: var(--spacing-xs) 0;
+				padding: var(--padding-xs) 0;
+
+				> h2 {
+						font-weight: 500;
+						font-size: pxToRem(20px);
+						margin-bottom: var(--spacing-xs);
+				}
+
+				> span, > ul > li {
+						color: var(--DeepGray);
+				}
+
+				> ul {
+						list-style: none;
+
+						> li {
+								font-size: pxToRem(15px);
+						}
+				}
+
+				&:not(&:first-child) {
+						border-top: 1px solid var(--ToGoContainer);
+				}
+		}
+}
