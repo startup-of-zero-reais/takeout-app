@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 
 type RankingProps = {}
 
-const Index = ( p: RankingProps ) => {
+const Index = ( _p: RankingProps ) => {
 		return (
 				<MainGrid className={ classnames(styles.mainGrid) }>
 						<div className={ classnames(styles.info) }>
@@ -31,7 +31,11 @@ const Index = ( p: RankingProps ) => {
 								</div>
 
 								<div className={ classnames(styles.saveButton) }>
-										<Button variant={ "contained" } size={ "large" }>
+										<Button
+												variant={ "contained" }
+												size={ "large" }
+												fullWidth
+										>
 												Salvar
 										</Button>
 								</div>

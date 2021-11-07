@@ -1,0 +1,57 @@
+@use "sass:math";
+@import './src/styles/index';
+
+.mainGrid {
+		background-color: var(--redVermilionBird);
+		padding: var(--padding-md);
+}
+
+.info {
+		background-color: white;
+		margin: 0 var(--spacing-md);
+		padding: var(--padding-md);
+		border-radius: var(--radii-md);
+}
+
+.avatar {
+		@include flex-column;
+		align-items: center;
+}
+
+.badge {
+		background-color: var(--redVermilionBird);
+
+		$border: 8px ;
+		border: pxToRem($border) solid white;
+		color: white;
+
+		$size: 50;
+		width: #{$size}px;
+		height: #{$size}px;
+		@include flex-row;
+		@include flex-center;
+
+		> div {
+				@include flex-row;
+				@include flex-center;
+				gap: pxToRem(2px);
+				font-size: pxToRem(14px);
+				font-weight: 500;
+		}
+}
+
+.profileInfo {
+		@include flex-column;
+		@include flex-center;
+
+		padding: var(--padding-md);
+
+		> span {
+				margin-top: var(--spacing-sm);
+		}
+}
+
+.saveButton {
+		@include flex-column;
+		@include flex-center;
+}
