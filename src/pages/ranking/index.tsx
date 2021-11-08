@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { MdCreditScore } from "react-icons/md";
-import { classnames, MainGrid } from "@src/components";
+import { classnames, FriendsRanking, MainGrid } from "@src/components";
 import styles from './styles.module.scss';
 
 const Ranking = () => {
@@ -38,6 +38,8 @@ const Ranking = () => {
 										<small>Top 3 ranqueado nos últimos 3 pedidos</small>
 								</div>
 						</section>
+
+						<FriendsRanking/>
 				</MainGrid>
 		);
 }
