@@ -1,0 +1,87 @@
+@import './src/styles/index';
+
+.section {
+
+}
+
+.podium {
+		display: block;
+		margin-bottom: pxToRem(-16px);
+
+		> div {
+				@include flex-row;
+				width: pxToRem(260px);
+				margin: 0 auto;
+
+				&:first-child {
+						align-items: center;
+						justify-content: space-between;
+						padding: 0 var(--padding-md);
+
+						> div {
+								@include flex-column;
+								@include flex-center;
+
+								color: white;
+
+								> label {
+										font-weight: 500;
+								}
+
+								&:nth-child(1) {
+										transform: translateY(20px);
+								}
+
+								&:nth-child(3) {
+										transform: translateY(40px);
+								}
+						}
+				}
+
+				&:last-child {
+						height: 120px;
+						overflow-y: hidden;
+				}
+		}
+}
+
+.friendsList {
+		@include flex-column;
+		@include darken-vermilion-bird;
+		color: white;
+		margin: var(--spacing-sm);
+		padding: var(--padding-sm);
+		border-radius: var(--radii-sm);
+
+		.friend {
+				@include flex-row;
+				@include flex-center;
+				gap: var(--spacing-sm);
+				padding-top: var(--padding-xs);
+
+				&:not(:first-child) {
+						border-top: 1px solid #{$ToGoContainer}40;
+				}
+
+				> small {
+						min-width: pxToRem(14px);
+				}
+
+				> div {
+						@include flex-row;
+						align-items: center;
+						flex: 1;
+						gap: var(--spacing-xs);
+				}
+
+				> span {
+						@include flex-row;
+						@include flex-center;
+						background-color: white;
+						color: var(--BlackTortoise);
+						font-size: pxToRem(12px);
+						min-width: pxToRem(40px);
+						border-radius: var(--radii-md);
+				}
+		}
+}
