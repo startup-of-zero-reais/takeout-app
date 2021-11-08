@@ -1,3 +1,5 @@
+@use 'sass:color';
+@import 'colors';
 @import 'mixins';
 
 @mixin flex-column {
@@ -27,4 +29,13 @@
 		font-weight: 500;
 		background-color: transparent;
 		border: none;
+}
+
+@mixin rect-size($size) {
+		width: $size;
+		height: $size;
+}
+
+@mixin darken-vermilion-bird($mix: 40%) {
+		background-color: #{color.mix(#000, $redVermilionBird, $mix)};
 }
