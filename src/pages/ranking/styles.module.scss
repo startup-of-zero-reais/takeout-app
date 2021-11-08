@@ -1,0 +1,82 @@
+@import './src/styles/index';
+
+.mainGrid {
+		background-color: var(--redVermilionBird);
+
+		> h1 {
+				color: white;
+				font-family: "Bluu Suuperstar", serif;
+				text-align: center;
+		}
+}
+
+section.section {
+		@include flex-column;
+		@include darken-vermilion-bird;
+		color: white;
+		margin: var(--spacing-sm);
+		padding: var(--padding-sm);
+		border-radius: var(--radii-sm);
+
+		> label {
+				text-transform: uppercase;
+				text-align: center;
+				padding: var(--padding-xs) 0;
+				font-weight: 500;
+				font-size: pxToRem(14px);
+		}
+}
+
+.pointsAndCredits {
+		@include flex-row;
+		justify-content: space-between;
+
+		font-size: pxToRem(36px);
+		font-weight: bold;
+
+		> span {
+				@include flex-row;
+				align-items: center;
+				gap: var(--spacing-sm);
+				font-family: 'SF Pro Display', sans-serif;
+
+				> i {
+						@include flex-column;
+						@include flex-center;
+						font-size: pxToRem(12px);
+						font-weight: 400;
+						gap: pxToRem(5px);
+
+						> svg {
+								@include rect-size(32px);
+								background-color: var(--redVermilionBird);
+								padding: pxToRem(6px);
+								border-radius: var(--radii-full);
+						}
+				}
+		}
+}
+
+.badgeReceived {
+		@include flex-column;
+		@include flex-center;
+
+		> span {
+				font-size: pxToRem(18px);
+				font-weight: 500;
+				margin: var(--spacing-sm);
+		}
+
+		> small {
+				font-size: pxToRem(14px);
+		}
+
+		.badgeIcon {
+				@include flex-column;
+				@include flex-center;
+				@include rect-size(120px);
+				padding: var(--padding-sm);
+				border-radius: var(--radii-full);
+				background-color: white;
+		}
+}
